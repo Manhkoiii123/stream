@@ -8,6 +8,7 @@ import { verify } from 'argon2'
 import type { Request } from 'express'
 
 import { PrismaService } from '@/src/core/prisma/prisma.service'
+import { getSessionMetadata } from '@/src/shared/utils/session-metadata.util'
 
 import { LoginInput } from './inputs/login.input'
 
@@ -18,7 +19,7 @@ export class SessionService {
 		private readonly configService: ConfigService
 	) {}
 
-	public async login(req: Request, input: LoginInput) {
+	public async login(req: Request, input: LoginInput, userAgent: string) {
 		const { login, password } = input
 		const user = await this.prismaService.user.findFirst({
 			where: {
@@ -35,9 +36,11 @@ export class SessionService {
 		if (!isValidPassword) {
 			throw new NotFoundException('Invalid login credentials')
 		}
+		const metadata = getSessionMetadata(req, userAgent)
 		return new Promise((resolver, reject) => {
 			req.session.userId = user.id
 			req.session.createdAt = new Date()
+			req.session.metadata = metadata
 
 			req.session.save((err) => {
 				if (err) {
