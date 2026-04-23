@@ -39,7 +39,24 @@ async function bootstrap() {
 				sameSite: 'lax'
 			},
 			store: new RedisStore({
-				client: redis,
+				client: {
+					get: (key: string) => redis.get(key),
+					set: (
+						key: string,
+						value: string,
+						opts?: { EX?: number; PX?: number }
+					) => {
+						if (opts?.EX)
+							return redis.set(key, value, 'EX', opts.EX)
+						if (opts?.PX)
+							return redis.set(key, value, 'PX', opts.PX)
+						return redis.set(key, value)
+					},
+					expire: (key: string, ttl: number) =>
+						redis.expire(key, ttl),
+					del: (key: string) => redis.del(key),
+					mget: (...keys: string[]) => redis.mget(...keys)
+				} as any,
 				prefix: config.getOrThrow<string>('SESSION_FOLDER')
 			})
 		})
