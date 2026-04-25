@@ -20,6 +20,7 @@
 		"test:e2e": "jest --config ./test/jest-e2e.json"
 	},
 	"dependencies": {
+		"-": "^0.0.1",
 		"@apollo/server": "^5.5.0",
 		"@as-integrations/express5": "^1.1.2",
 		"@nestjs-modules/mailer": "^2.3.4",
@@ -31,7 +32,12 @@
 		"@nestjs/mapped-types": "*",
 		"@nestjs/platform-express": "^11.0.1",
 		"@prisma/client": "^6.0.0",
+		"@react-email/components": "^1.0.12",
+		"@react-email/html": "^0.0.12",
+		"@react-email/tailwind": "^2.0.7",
 		"@types/express-session": "^1.19.0",
+		"@types/react": "^19.2.14",
+		"D": "^1.0.0",
 		"argon2": "^0.44.0",
 		"class-transformer": "^0.5.1",
 		"class-validator": "^0.15.1",
@@ -45,8 +51,11 @@
 		"i18n-iso-countries": "^7.14.0",
 		"ioredis": "^5.10.1",
 		"prisma": "^6.0.0",
+		"react": "^19.2.5",
+		"react-dom": "^19.2.5",
 		"reflect-metadata": "^0.2.2",
-		"rxjs": "^7.8.1"
+		"rxjs": "^7.8.1",
+		"uuid": "^14.0.0"
 	},
 	"devDependencies": {
 		"@eslint/eslintrc": "^3.2.0",
@@ -63,6 +72,7 @@
 		"@types/jest": "^29.5.14",
 		"@types/node": "^22.10.7",
 		"@types/supertest": "^6.0.2",
+		"@types/uuid": "^11.0.0",
 		"eslint": "^9.18.0",
 		"eslint-config-prettier": "^10.0.1",
 		"eslint-plugin-prettier": "^5.2.2",
