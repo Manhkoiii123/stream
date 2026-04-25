@@ -11,7 +11,7 @@ export const getMailerConfig = (
 			secure: false,
 			auth: {
 				user: configService.getOrThrow<string>('MAILER_LOGIN'),
-				pass: configService.getOrThrow<string>('MAILER_PASS')
+				pass: configService.getOrThrow<string>('MAILER_PASSWORD')
 			}
 		},
 		defaults: {
