@@ -16,4 +16,8 @@ export class LoginInput {
 	@IsNotEmpty()
 	@MinLength(8)
 	public password: string
+
+	@Field(() => String, { nullable: true })
+	@IsString()
+	public pin?: string
 }
