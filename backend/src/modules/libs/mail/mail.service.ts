@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { render } from '@react-email/components'
 
+import { DeactiveTemplate } from '@/src/modules/libs/mail/templates/deactive.template'
 import { PasswordResetTemplate } from '@/src/modules/libs/mail/templates/password-reset.template'
 import { VerificationTemplate } from '@/src/modules/libs/mail/templates/verification.template'
 import { SessionMetadata } from '@/src/shared/types/session-metadata.types'
@@ -35,6 +36,14 @@ export class MailService {
 			PasswordResetTemplate({ domain, token, metadata })
 		)
 		return this.sendMail(email, 'Reset your Stream password', html)
+	}
+	public async sendDeactivateToken(
+		email: string,
+		token: string,
+		metadata: SessionMetadata
+	) {
+		const html = await render(DeactiveTemplate({ token, metadata }))
+		return this.sendMail(email, 'Deactivate your Stream account', html)
 	}
 
 	private sendMail(email: string, subject: string, html: string) {

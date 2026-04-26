@@ -1,22 +1,20 @@
 import { Field, InputType } from '@nestjs/graphql'
 import {
+	IsEmail,
 	IsNotEmpty,
 	IsOptional,
 	IsString,
 	Length,
-	Matches,
 	MinLength
 } from 'class-validator'
 
 @InputType()
-export class LoginInput {
+export class DeactivateInput {
 	@Field()
 	@IsString()
 	@IsNotEmpty()
-	@Matches(/^[a-zA-Z0-9_]+$/, {
-		message: 'Username can only contain letters, numbers, and underscores'
-	})
-	public login: string
+	@IsEmail()
+	public email: string
 
 	@Field()
 	@IsString()
