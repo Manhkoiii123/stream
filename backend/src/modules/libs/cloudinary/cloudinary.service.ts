@@ -54,6 +54,37 @@ export class CloudinaryService {
 		})
 	}
 
+	public async upload(
+		buffer: Buffer,
+		fileName: string,
+		mimeType: string
+	): Promise<UploadApiResponse> {
+		return new Promise((resolve, reject) => {
+			cloudinary.uploader
+				.upload_stream(
+					{
+						public_id: fileName
+							.replace(/^\//, '')
+							.replace(/\.[^/.]+$/, ''),
+						resource_type: 'image',
+						format: mimeType.split('/')[1] ?? 'webp',
+						overwrite: true
+					},
+					(error, result) => {
+						if (error || !result) {
+							return reject(
+								new BadRequestException(
+									error?.message ?? 'Upload failed'
+								)
+							)
+						}
+						resolve(result)
+					}
+				)
+				.end(buffer)
+		})
+	}
+
 	public async deleteImage(publicId: string): Promise<void> {
 		await cloudinary.uploader.destroy(publicId)
 	}

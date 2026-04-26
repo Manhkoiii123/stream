@@ -2,13 +2,15 @@ import { Injectable } from '@nestjs/common'
 import { Cron } from '@nestjs/schedule'
 
 import { PrismaService } from '@/src/core/prisma/prisma.service'
+import { CloudinaryService } from '@/src/modules/libs/cloudinary/cloudinary.service'
 import { MailService } from '@/src/modules/libs/mail/mail.service'
 
 @Injectable()
 export class CronService {
 	constructor(
 		private readonly prismaService: PrismaService,
-		private readonly mailService: MailService
+		private readonly mailService: MailService,
+		private readonly cloudinaryService: CloudinaryService
 	) {}
 
 	@Cron('0 0 * * *')
@@ -28,6 +30,9 @@ export class CronService {
 			await this.mailService.sendAccountDeletionConfirmation(
 				account.email
 			)
+			if (account.avatar) {
+				await this.cloudinaryService.deleteImage(account.avatar)
+			}
 		}
 		await this.prismaService.user.deleteMany({
 			where: {
