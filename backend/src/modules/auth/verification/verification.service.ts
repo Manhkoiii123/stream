@@ -55,10 +55,7 @@ export class VerificationService {
 			TokenType.EMAIL_VERIFY,
 			true
 		)
-		console.log(
-			'🚀 ~ VerificationService ~ sendVerificationToken ~ verificationToken:',
-			verificationToken
-		)
+
 		await this.mailService.sendVerificationToken(
 			'manhtranduc0202@gmail.com',
 			verificationToken.token
