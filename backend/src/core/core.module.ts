@@ -4,6 +4,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql'
 
 import { DeactivateModule } from '@/src/modules/auth/deactivate/deactivate.module'
+import { CronModule } from '@/src/modules/cron/cron.module'
 
 import { AccountModule } from '../modules/auth/account/account.module'
 import { PasswordRecoveryModule } from '../modules/auth/password-recovery/password-recovery.module'
@@ -37,7 +38,8 @@ import { RedisModule } from './redis/redis.module'
 		MailModule,
 		PasswordRecoveryModule,
 		TotpModule,
-		DeactivateModule
+		DeactivateModule,
+		CronModule
 	],
 	controllers: [],
 	providers: []

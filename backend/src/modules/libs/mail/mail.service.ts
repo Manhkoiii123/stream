@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { render } from '@react-email/components'
 
+import { AccountDeletionTemplate } from '@/src/modules/libs/mail/templates/account-deletion.template'
 import { DeactiveTemplate } from '@/src/modules/libs/mail/templates/deactive.template'
 import { PasswordResetTemplate } from '@/src/modules/libs/mail/templates/password-reset.template'
 import { VerificationTemplate } from '@/src/modules/libs/mail/templates/verification.template'
@@ -44,6 +45,18 @@ export class MailService {
 	) {
 		const html = await render(DeactiveTemplate({ token, metadata }))
 		return this.sendMail(email, 'Deactivate your Stream account', html)
+	}
+
+	public async sendAccountDeletionConfirmation(email: string) {
+		const domain =
+			this.configService.get<string>('ALLOWED_DOMAIN') ||
+			'http://localhost:3000'
+		const html = await render(AccountDeletionTemplate({ domain }))
+		return this.sendMail(
+			email,
+			'Your Stream account has been permanently deleted',
+			html
+		)
 	}
 
 	private sendMail(email: string, subject: string, html: string) {
