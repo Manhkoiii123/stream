@@ -1,7 +1,10 @@
 import { ConflictException, Injectable } from '@nestjs/common'
-import { hash } from 'argon2'
+import { User } from '@prisma/client'
+import { hash, verify } from 'argon2'
 
 import { PrismaService } from '@/src/core/prisma/prisma.service'
+import { ChangeEmailInput } from '@/src/modules/auth/account/inputs/change-email.input'
+import { ChangePasswordInput } from '@/src/modules/auth/account/inputs/change-password.input'
 import { VerificationService } from '@/src/modules/auth/verification/verification.service'
 
 import { CreateUserInput } from './inputs/create-user.input'
@@ -54,5 +57,34 @@ export class AccountService {
 		})
 		await this.verificationService.sendVerificationToken(user)
 		return user
+	}
+
+	public async changeEmail(user: User, input: ChangeEmailInput) {
+		const { email } = input
+		await this.prismaService.user.update({
+			where: {
+				id: user.id
+			},
+			data: {
+				email
+			}
+		})
+		return true
+	}
+	public async changePassword(user: User, input: ChangePasswordInput) {
+		const { newPassword, oldPassword } = input
+		const isValidPassword = await verify(user.password, oldPassword)
+		if (!isValidPassword) {
+			throw new ConflictException('Current password is incorrect')
+		}
+		await this.prismaService.user.update({
+			where: {
+				id: user.id
+			},
+			data: {
+				password: await hash(newPassword)
+			}
+		})
+		return true
 	}
 }
