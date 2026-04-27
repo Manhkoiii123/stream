@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { Prisma, User } from '@prisma/client'
@@ -26,7 +25,7 @@ export class StreamService {
 			? this.findBySearchTermFilter(searchTerm)
 			: undefined
 		const streams = await this.prismaService.stream.findMany({
-			take: take ?? 20,
+			take: take ?? 12,
 			skip: skip ?? 0,
 			where: {
 				user: {
@@ -35,7 +34,8 @@ export class StreamService {
 				...whereClause
 			},
 			include: {
-				user: true
+				user: true,
+				category: true
 			},
 			orderBy: {
 				createdAt: 'desc'
@@ -53,7 +53,7 @@ export class StreamService {
 			}
 		})
 		const randomIndex = new Set<number>()
-		while (randomIndex.size < 4) {
+		while (randomIndex.size < 7) {
 			const index = Math.floor(Math.random() * total)
 			randomIndex.add(index)
 		}
@@ -64,7 +64,8 @@ export class StreamService {
 				}
 			},
 			include: {
-				user: true
+				user: true,
+				category: true
 			},
 			take: total,
 			skip: 0
@@ -101,7 +102,12 @@ export class StreamService {
 				userId: user.id
 			},
 			data: {
-				title
+				title,
+				category: {
+					connect: {
+						id: categoryId
+					}
+				}
 			}
 		})
 
