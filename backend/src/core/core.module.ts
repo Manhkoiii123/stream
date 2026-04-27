@@ -10,6 +10,7 @@ import { CronModule } from '@/src/modules/cron/cron.module'
 import { LivekitModule } from '@/src/modules/libs/livekit/livekit.module'
 import { IngressModule } from '@/src/modules/stream/ingress/ingress.module'
 import { StreamModule } from '@/src/modules/stream/stream.module'
+import { WebhookModule } from '@/src/modules/webhook/webhook.module'
 
 import { AccountModule } from '../modules/auth/account/account.module'
 import { PasswordRecoveryModule } from '../modules/auth/password-recovery/password-recovery.module'
@@ -54,7 +55,8 @@ import { RedisModule } from './redis/redis.module'
 			useFactory: getLiveKitConfig,
 			inject: [ConfigService]
 		}),
-		IngressModule
+		IngressModule,
+		WebhookModule
 	],
 	controllers: [],
 	providers: []
