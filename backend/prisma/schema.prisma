@@ -1,5 +1,3 @@
-
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,44 +8,47 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
+  id String @id @default(uuid())
 
-  email     String   @unique
-  password  String
-  username String   @unique
-  displayName String @map("display_name")
-  avatar String? 
-  bio String?
-  tokens Token[]
-  socialLinks SocialLink[]
-  isVerified Boolean @default(false) @map("is_verified")
-  isEmailVerified Boolean @default(false) @map("is_email_verified")
-  isTotpEnabled Boolean @default(false) @map("is_totp_enabled")
-  totpSecret String? @map("totp_secret")
-  isDeactivated Boolean @default(false) @map("is_deactivated")
-  deactivatedAt DateTime? @map("deactivated_at")
-  stream Stream?
-  chatMessages ChatMessage[]
-  followers Follow[] @relation("follower")
-  following Follow[] @relation("following")
+  email                String                 @unique
+  password             String
+  username             String                 @unique
+  displayName          String                 @map("display_name")
+  avatar               String?
+  bio                  String?
+  telegramId           String?                @default("telegram_id") @map("telegram_id")
+  tokens               Token[]
+  socialLinks          SocialLink[]
+  isVerified           Boolean                @default(false) @map("is_verified")
+  isEmailVerified      Boolean                @default(false) @map("is_email_verified")
+  isTotpEnabled        Boolean                @default(false) @map("is_totp_enabled")
+  totpSecret           String?                @map("totp_secret")
+  isDeactivated        Boolean                @default(false) @map("is_deactivated")
+  deactivatedAt        DateTime?              @map("deactivated_at")
+  stream               Stream?
+  chatMessages         ChatMessage[]
+  followers            Follow[]               @relation("follower")
+  following            Follow[]               @relation("following")
+  notifications        Notification[]
+  notificationSettings NotificationSettings?
 
-  createdAt DateTime @default(now()) @map("created_at") 
+  createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("users")
 }
 
 model Token {
-  id        String   @id @default(uuid())
+  id String @id @default(uuid())
 
-  token String @unique
-  type  TokenType
-  expiresIn DateTime @map("expires_in")
+  token     String    @unique
+  type      TokenType
+  expiresIn DateTime  @map("expires_in")
 
-  user  User?   @relation(fields: [userId], references: [id],onDelete: Cascade)
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String? @map("user_id")
 
-  createdAt DateTime @default(now()) @map("created_at") 
+  createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("tokens")
@@ -55,92 +56,138 @@ model Token {
 
 model SocialLink {
   id        String   @id @default(uuid())
-  title String
-  url String
-  position Int
-   user  User?   @relation(fields: [userId], references: [id],onDelete: Cascade)
-  userId String? @map("user_id")
-  createdAt DateTime @default(now()) @map("created_at") 
+  title     String
+  url       String
+  position  Int
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String?  @map("user_id")
+  createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 }
+
 enum TokenType {
   EMAIL_VERIFY
   PASSWORD_RESET
   DEACTIVATION
+  TELEGRAM_AUTH
 
   @@map("token_types")
 }
 
 model Stream {
-  id        String   @id @default(uuid())
+  id String @id @default(uuid())
 
-  title String
+  title        String
   thumbnailUrl String? @map("thumbnail_url")
 
   ingressId String? @unique @map("ingress_id")
   serverUrl String? @map("server_url")
   streamKey String? @unique @map("stream_key")
 
-  isLive Boolean @default(false) @map("is_live")
-  isChatEnabled Boolean @default(true) @map("is_chat_enabled")
-  isChatFollowersOnly Boolean @default(false) @map("is_chat_followers_only")
+  isLive                     Boolean @default(false) @map("is_live")
+  isChatEnabled              Boolean @default(true) @map("is_chat_enabled")
+  isChatFollowersOnly        Boolean @default(false) @map("is_chat_followers_only")
   isChatPremiumFollowersOnly Boolean @default(false) @map("is_chat_premium_followers_only")
-  
+
   chatMessages ChatMessage[]
 
-  user  User?   @relation(fields: [userId], references: [id],onDelete: Cascade)
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String? @unique @map("user_id")
 
-  category Category? @relation(fields: [categoryId], references: [id])
-  categoryId String? @map("category_id")
+  category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId String?   @map("category_id")
 
-  createdAt DateTime @default(now()) @map("created_at") 
+  createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+
   @@map("streams")
 }
 
 model Category {
-  id        String   @id @default(uuid())
-  title String 
-  slug String @unique
-  description String?
-  thumbnailUrl String? @map("thumbnail_url")
-  streams Stream[]
-  createdAt DateTime @default(now()) @map("created_at") 
-  updatedAt DateTime @updatedAt @map("updated_at")
+  id           String   @id @default(uuid())
+  title        String
+  slug         String   @unique
+  description  String?
+  thumbnailUrl String?  @map("thumbnail_url")
+  streams      Stream[]
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
   @@map("categories")
 }
 
 model ChatMessage {
-  id        String   @id @default(uuid())
+  id String @id @default(uuid())
 
   text String
 
-  user User? @relation(fields: [userId], references: [id],onDelete: Cascade)
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String? @map("user_id")
 
-  stream Stream? @relation(fields: [streamId], references: [id],onDelete: Cascade)
+  stream   Stream? @relation(fields: [streamId], references: [id], onDelete: Cascade)
   streamId String? @map("stream_id")
 
-  createdAt DateTime @default(now()) @map("created_at") 
+  createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+
   @@map("chat_messages")
 }
 
 model Follow {
-  id        String   @id @default(uuid())
+  id String @id @default(uuid())
 
-  follower User @relation("follower", fields: [followerId], references: [id],onDelete: Cascade)
+  follower   User   @relation("follower", fields: [followerId], references: [id], onDelete: Cascade)
   followerId String @map("follower_id")
 
-  following User @relation("following", fields: [followingId], references: [id],onDelete: Cascade)
+  following   User   @relation("following", fields: [followingId], references: [id], onDelete: Cascade)
   followingId String @map("following_id")
 
-  createdAt DateTime @default(now()) @map("created_at") 
+  createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@unique([followerId, followingId])
   @@index([followerId])
   @@index([followingId])
   @@map("follows")
+}
+
+model Notification {
+  id String @id @default(uuid())
+
+  message String
+  type    NotificationType
+  isRead  Boolean          @default(false) @map("is_read")
+
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String? @map("user_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("notifications")
+}
+
+model NotificationSettings {
+  id String @id @default(uuid())
+
+  siteNotifications     Boolean @default(true) @map("site_notifications")
+  telegramNotifications Boolean @default(true) @map("telegram_notifications")
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @unique @map("user_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("notification_settings")
+}
+
+enum NotificationType {
+  STREAM_START
+  NEW_FOLLOWER
+  NEW_SPONSORSHIP
+  ENABLE_TWO_FACTOR
+  VERIFIED_CHANNEL
+
+  @@map("notification_types")
 }
