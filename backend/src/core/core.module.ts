@@ -3,9 +3,11 @@ import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql'
 
+import { getLiveKitConfig } from '@/src/core/config/livekit.config'
 import { DeactivateModule } from '@/src/modules/auth/deactivate/deactivate.module'
 import { ProfileModule } from '@/src/modules/auth/profile/profile.module'
 import { CronModule } from '@/src/modules/cron/cron.module'
+import { LivekitModule } from '@/src/modules/libs/livekit/livekit.module'
 import { StreamModule } from '@/src/modules/stream/stream.module'
 
 import { AccountModule } from '../modules/auth/account/account.module'
@@ -45,7 +47,12 @@ import { RedisModule } from './redis/redis.module'
 		DeactivateModule,
 		CronModule,
 		ProfileModule,
-		StreamModule
+		StreamModule,
+		LivekitModule.registerAsync({
+			imports: [ConfigModule],
+			useFactory: getLiveKitConfig,
+			inject: [ConfigService]
+		})
 	],
 	controllers: [],
 	providers: []
