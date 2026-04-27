@@ -8,6 +8,7 @@ import { DeactivateModule } from '@/src/modules/auth/deactivate/deactivate.modul
 import { ProfileModule } from '@/src/modules/auth/profile/profile.module'
 import { CronModule } from '@/src/modules/cron/cron.module'
 import { LivekitModule } from '@/src/modules/libs/livekit/livekit.module'
+import { IngressModule } from '@/src/modules/stream/ingress/ingress.module'
 import { StreamModule } from '@/src/modules/stream/stream.module'
 
 import { AccountModule } from '../modules/auth/account/account.module'
@@ -52,7 +53,8 @@ import { RedisModule } from './redis/redis.module'
 			imports: [ConfigModule],
 			useFactory: getLiveKitConfig,
 			inject: [ConfigService]
-		})
+		}),
+		IngressModule
 	],
 	controllers: [],
 	providers: []
