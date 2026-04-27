@@ -8,6 +8,7 @@ import { DeactivateModule } from '@/src/modules/auth/deactivate/deactivate.modul
 import { ProfileModule } from '@/src/modules/auth/profile/profile.module'
 import { ChatModule } from '@/src/modules/chat/chat.module'
 import { CronModule } from '@/src/modules/cron/cron.module'
+import { FollowModule } from '@/src/modules/follow/follow.module'
 import { LivekitModule } from '@/src/modules/libs/livekit/livekit.module'
 import { IngressModule } from '@/src/modules/stream/ingress/ingress.module'
 import { StreamModule } from '@/src/modules/stream/stream.module'
@@ -60,7 +61,8 @@ import { RedisModule } from './redis/redis.module'
 		IngressModule,
 		WebhookModule,
 		CategoryModule,
-		ChatModule
+		ChatModule,
+		FollowModule
 	],
 	controllers: [],
 	providers: []
