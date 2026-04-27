@@ -1,19 +1,23 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
 import { Prisma, User } from '@prisma/client'
 import * as Upload from 'graphql-upload/Upload.js'
+import { AccessToken } from 'livekit-server-sdk'
 import * as sharp from 'sharp'
 
 import { PrismaService } from '@/src/core/prisma/prisma.service'
 import { CloudinaryService } from '@/src/modules/libs/cloudinary/cloudinary.service'
 import { ChangeStreamInfoInput } from '@/src/modules/stream/inputs/change-stream-info.input'
 import { FiltersInput } from '@/src/modules/stream/inputs/filter.input'
+import { GenerateStreamTokenInput } from '@/src/modules/stream/inputs/generate-stream-token.input'
 
 @Injectable()
 export class StreamService {
 	public constructor(
 		private readonly prismaService: PrismaService,
-		private readonly cloudinaryService: CloudinaryService
+		private readonly cloudinaryService: CloudinaryService,
+		private readonly configService: ConfigService
 	) {}
 
 	public async findAll(input: FiltersInput = {}) {
@@ -164,5 +168,46 @@ export class StreamService {
 			}
 		})
 		return stream
+	}
+
+	public async generateStreamToken(input: GenerateStreamTokenInput) {
+		const { userId, channelId } = input
+		let self: { id: string; username: string }
+		const user = await this.prismaService.user.findUnique({
+			where: {
+				id: userId
+			}
+		})
+		if (user) {
+			self = { id: user.id, username: user.username }
+		} else {
+			self = {
+				id: userId,
+				username: `Guest ${Math.floor(Math.random() * 100000)}`
+			}
+		}
+		const channel = await this.prismaService.user.findUnique({
+			where: {
+				id: channelId
+			}
+		})
+		if (!channel) {
+			throw new NotFoundException('Channel not found')
+		}
+		const isHost = self.id === channelId
+		const token = new AccessToken(
+			this.configService.getOrThrow<string>('LIVEKIT_API_KEY'),
+			this.configService.getOrThrow<string>('LIVEKIT_API_SECRET'),
+			{
+				identity: isHost ? `host-${self.id}` : `${self.id}`,
+				name: self.username
+			}
+		)
+		token.addGrant({
+			room: channel.id,
+			roomJoin: true,
+			canPublish: false
+		})
+		return { token: token.toJwt() }
 	}
 }
