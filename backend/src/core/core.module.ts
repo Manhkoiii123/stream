@@ -6,6 +6,7 @@ import { GraphQLModule } from '@nestjs/graphql'
 import { getLiveKitConfig } from '@/src/core/config/livekit.config'
 import { DeactivateModule } from '@/src/modules/auth/deactivate/deactivate.module'
 import { ProfileModule } from '@/src/modules/auth/profile/profile.module'
+import { ChatModule } from '@/src/modules/chat/chat.module'
 import { CronModule } from '@/src/modules/cron/cron.module'
 import { LivekitModule } from '@/src/modules/libs/livekit/livekit.module'
 import { IngressModule } from '@/src/modules/stream/ingress/ingress.module'
@@ -58,7 +59,8 @@ import { RedisModule } from './redis/redis.module'
 		}),
 		IngressModule,
 		WebhookModule,
-		CategoryModule
+		CategoryModule,
+		ChatModule
 	],
 	controllers: [],
 	providers: []

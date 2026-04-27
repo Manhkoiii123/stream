@@ -18,6 +18,12 @@ type CategoryModel {
   updatedAt: DateTime!
 }
 
+input ChangeChatSettingsInput {
+  isChatEnabled: Boolean!
+  isChatFollowersOnly: Boolean!
+  isChatPremiumFollowersOnly: Boolean!
+}
+
 input ChangeEmailInput {
   email: String!
 }
@@ -36,6 +42,17 @@ input ChangePasswordInput {
 input ChangeStreamInfoInput {
   categoryId: String!
   title: String!
+}
+
+type ChatModel {
+  createdAt: DateTime!
+  id: String!
+  stream: StreamModel!
+  streamId: String!
+  text: String!
+  updatedAt: DateTime!
+  user: UserModel!
+  userId: String!
 }
 
 input CreateUserInput {
@@ -95,6 +112,7 @@ input LoginInput {
 }
 
 type Mutation {
+  changeChatSettings(data: ChangeChatSettingsInput!): Boolean!
   changeEmail(data: ChangeEmailInput!): Boolean!
   changePassword(data: ChangePasswordInput!): Boolean!
   changeProfileAvatar(avatar: Upload!): Boolean!
@@ -118,6 +136,7 @@ type Mutation {
   removeStreamThumbnail: Boolean!
   reorderSocialLinks(list: [SocialLinkOrderInput!]!): Boolean!
   resetPassword(data: ResetPasswordInput!): Boolean!
+  sendChatMessage(data: SendMessageInput!): ChatModel!
   updateSocialLink(data: SocialLinkInput!, id: String!): Boolean!
   verifyAccount(data: VerificationInput!): UserModel!
 }
@@ -133,6 +152,7 @@ type Query {
   findAllUsers: [UserModel!]!
   findCategoryById(slug: String!): CategoryModel!
   findCurrentSession: SessionModel!
+  findMessagesByStream(streamId: String!): [ChatModel!]!
   findProfile: UserModel!
   findRandomCategories: [CategoryModel!]!
   findRandomStreams: [StreamModel!]!
@@ -144,6 +164,11 @@ type Query {
 
 input ResetPasswordInput {
   email: String!
+}
+
+input SendMessageInput {
+  streamId: String!
+  text: String!
 }
 
 type SessionMetadataModel {
@@ -182,9 +207,13 @@ input SocialLinkOrderInput {
 type StreamModel {
   category: CategoryModel!
   categoryId: String!
+  chatMessages: [ChatModel!]!
   createdAt: DateTime!
   id: String!
   ingressId: String
+  isChatEnabled: Boolean!
+  isChatFollowersOnly: Boolean!
+  isChatPremiumFollowersOnly: Boolean!
   isLive: Boolean!
   serverUrl: String
   streamKey: String
@@ -193,6 +222,10 @@ type StreamModel {
   updatedAt: DateTime!
   user: UserModel!
   userId: String!
+}
+
+type Subscription {
+  chatMessageAdded(streamId: String!): ChatModel!
 }
 
 type TotpModel {
