@@ -6,6 +6,7 @@ import { GraphQLModule } from '@nestjs/graphql'
 import { DeactivateModule } from '@/src/modules/auth/deactivate/deactivate.module'
 import { ProfileModule } from '@/src/modules/auth/profile/profile.module'
 import { CronModule } from '@/src/modules/cron/cron.module'
+import { StreamModule } from '@/src/modules/stream/stream.module'
 
 import { AccountModule } from '../modules/auth/account/account.module'
 import { PasswordRecoveryModule } from '../modules/auth/password-recovery/password-recovery.module'
@@ -43,7 +44,8 @@ import { RedisModule } from './redis/redis.module'
 		TotpModule,
 		DeactivateModule,
 		CronModule,
-		ProfileModule
+		ProfileModule,
+		StreamModule
 	],
 	controllers: [],
 	providers: []
