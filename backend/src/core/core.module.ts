@@ -3,25 +3,25 @@ import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql'
 
-import { getLiveKitConfig } from '@/src/core/config/livekit.config'
-import { DeactivateModule } from '@/src/modules/auth/deactivate/deactivate.module'
-import { ProfileModule } from '@/src/modules/auth/profile/profile.module'
-import { ChatModule } from '@/src/modules/chat/chat.module'
-import { CronModule } from '@/src/modules/cron/cron.module'
-import { FollowModule } from '@/src/modules/follow/follow.module'
-import { LivekitModule } from '@/src/modules/libs/livekit/livekit.module'
-import { IngressModule } from '@/src/modules/stream/ingress/ingress.module'
-import { StreamModule } from '@/src/modules/stream/stream.module'
-import { WebhookModule } from '@/src/modules/webhook/webhook.module'
-
+import { getLiveKitConfig } from '../core/config/livekit.config'
 import { AccountModule } from '../modules/auth/account/account.module'
+import { DeactivateModule } from '../modules/auth/deactivate/deactivate.module'
 import { PasswordRecoveryModule } from '../modules/auth/password-recovery/password-recovery.module'
+import { ProfileModule } from '../modules/auth/profile/profile.module'
 import { SessionModule } from '../modules/auth/session/session.module'
 import { TotpModule } from '../modules/auth/totp/totp.module'
 import { VerificationModule } from '../modules/auth/verification/verification.module'
 import { CategoryModule } from '../modules/category/category.module'
+import { ChannelsModule } from '../modules/channels/channels.module'
+import { ChatModule } from '../modules/chat/chat.module'
+import { CronModule } from '../modules/cron/cron.module'
+import { FollowModule } from '../modules/follow/follow.module'
 import { CloudinaryModule } from '../modules/libs/cloudinary/cloudinary.module'
+import { LivekitModule } from '../modules/libs/livekit/livekit.module'
 import { MailModule } from '../modules/libs/mail/mail.module'
+import { IngressModule } from '../modules/stream/ingress/ingress.module'
+import { StreamModule } from '../modules/stream/stream.module'
+import { WebhookModule } from '../modules/webhook/webhook.module'
 import { IS_DEV_ENV } from '../shared/utils/is-dev.util'
 
 import { getGraphQLConfig } from './config/graphql.config'
@@ -62,7 +62,8 @@ import { RedisModule } from './redis/redis.module'
 		WebhookModule,
 		CategoryModule,
 		ChatModule,
-		FollowModule
+		FollowModule,
+		ChannelsModule
 	],
 	controllers: [],
 	providers: []
