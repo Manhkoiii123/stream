@@ -60,4 +60,31 @@ export class ChannelsService {
 		})
 		return followersCount
 	}
+
+	public async findSponsorsByChannel(channelId: string) {
+		const channel = await this.prismaService.user.findUnique({
+			where: {
+				id: channelId,
+				isDeactivated: false
+			}
+		})
+		if (!channel) {
+			throw new NotFoundException('Channel not found')
+		}
+		const sponsors =
+			await this.prismaService.sponsorshipSubscription.findMany({
+				where: {
+					channelId: channel.id
+				},
+				orderBy: {
+					createdAt: 'desc'
+				},
+				include: {
+					plan: true,
+					user: true,
+					channel: true
+				}
+			})
+		return sponsors
+	}
 }

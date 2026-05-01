@@ -1,5 +1,10 @@
 import { Injectable } from '@nestjs/common'
-import { NotificationType, TokenType, User } from '@prisma/client'
+import {
+	NotificationType,
+	SponsorshipPlan,
+	TokenType,
+	User
+} from '@prisma/client'
 
 import { PrismaService } from '@/src/core/prisma/prisma.service'
 import { ChangeNotificationSettingInput } from '@/src/modules/notification/inputs/change-notification-setting.input'
@@ -39,6 +44,7 @@ export class NotificationService {
 		})
 		return notifications
 	}
+
 	public async changeSettings(
 		user: User,
 		input: ChangeNotificationSettingInput
@@ -121,6 +127,25 @@ export class NotificationService {
 			data: {
 				message: `<b class='font-medium'>New follower!</b><p><a href='/${follower.username}' class='font-semibold'>${follower.displayName}</a> started following you.</p>`,
 				type: NotificationType.NEW_FOLLOWER,
+				user: {
+					connect: {
+						id: userId
+					}
+				}
+			}
+		})
+		return notification
+	}
+
+	public async createNewSponsorship(
+		userId: string,
+		plan: SponsorshipPlan,
+		sponsor: User
+	) {
+		const notification = await this.prismaService.notification.create({
+			data: {
+				message: `<b class='font-medium'>New sponsorship!</b><p><a href='/${sponsor.username}' class='font-semibold'>${sponsor.displayName}</a> just subscribed to your channel with the <span class='font-semibold'>${plan.title}</span> plan.</p>`,
+				type: NotificationType.NEW_SPONSORSHIP,
 				user: {
 					connect: {
 						id: userId
