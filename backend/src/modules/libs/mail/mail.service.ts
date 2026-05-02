@@ -5,8 +5,10 @@ import { render } from '@react-email/components'
 
 import { AccountDeletionTemplate } from '@/src/modules/libs/mail/templates/account-deletion.template'
 import { DeactiveTemplate } from '@/src/modules/libs/mail/templates/deactive.template'
+import { EnableTwoFactorTemplate } from '@/src/modules/libs/mail/templates/enable-two-factor.template'
 import { PasswordResetTemplate } from '@/src/modules/libs/mail/templates/password-reset.template'
 import { VerificationTemplate } from '@/src/modules/libs/mail/templates/verification.template'
+import { VerifyChannelTemplate } from '@/src/modules/libs/mail/templates/verify-channel.template'
 import { SessionMetadata } from '@/src/shared/types/session-metadata.types'
 
 @Injectable()
@@ -57,6 +59,17 @@ export class MailService {
 			'Your Stream account has been permanently deleted',
 			html
 		)
+	}
+	public async sendEnableTwoFactorToken(email: string) {
+		const domain =
+			this.configService.get<string>('ALLOWED_DOMAIN') ||
+			'http://localhost:3000'
+		const html = await render(EnableTwoFactorTemplate({ domain }))
+		return this.sendMail(email, 'Enable Two-Factor Authentication', html)
+	}
+	public async sendVerifyChannel(email: string) {
+		const html = await render(VerifyChannelTemplate())
+		return this.sendMail(email, 'Enable Two-Factor Authentication', html)
 	}
 
 	private sendMail(email: string, subject: string, html: string) {

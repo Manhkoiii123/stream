@@ -21,7 +21,6 @@ import { CloudinaryModule } from '../modules/libs/cloudinary/cloudinary.module'
 import { LivekitModule } from '../modules/libs/livekit/livekit.module'
 import { MailModule } from '../modules/libs/mail/mail.module'
 import { StripeModule } from '../modules/libs/stripe/stripe.module'
-import { TelegramModule } from '../modules/libs/telegram/telegram.module'
 import { NotificationModule } from '../modules/notification/notification.module'
 import { PlanModule } from '../modules/sponsorship/plan/plan.module'
 import { SubscriptionModule } from '../modules/sponsorship/subscription/subscription.module'
@@ -77,7 +76,6 @@ import { RedisModule } from './redis/redis.module'
 		FollowModule,
 		ChannelsModule,
 		NotificationModule,
-		TelegramModule,
 		PlanModule,
 		TransactionModule,
 		SubscriptionModule
