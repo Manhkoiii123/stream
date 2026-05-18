@@ -1,9 +1,12 @@
-import { Button } from "@/components/ui/button";
+"use client";
+
+import { useFindChannelByUsernameQuery } from "@/graphql/generated/output";
 
 export default function Home() {
-  return (
-    <div className="bg-primary h-screen">
-      <Button>hrelo</Button>
-    </div>
-  );
+  const { data, loading } = useFindChannelByUsernameQuery({
+    variables: {
+      username: "silentblade",
+    },
+  });
+  return <div className="">{JSON.stringify(data)}</div>;
 }
