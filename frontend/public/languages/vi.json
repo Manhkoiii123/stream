@@ -21,6 +21,13 @@
       "successTitle": "Tài khoản đã được tạo",
       "successDescription": "Email xác nhận đã được gửi. Vui lòng kiểm tra hộp thư đến và làm theo hướng dẫn.",
       "alreadyHaveAccount": "Đã có tài khoản? Đăng nhập"
+    },
+    "verify": {
+      "heading": "Xác nhận Tài khoản",
+      "description": "Email xác nhận đã được gửi đến địa chỉ email của bạn. Vui lòng kiểm tra hộp thư đến và click vào liên kết để xác nhận tài khoản.",
+      "resendButton": "Gửi lại Email Xác nhận",
+      "successMessage": "Email xác nhận thành công. ",
+      "errorMessage": "Vui lòng thử lại sau hoặc liên hệ bộ phận hỗ trợ."
     }
   }
 }

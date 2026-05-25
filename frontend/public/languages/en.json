@@ -21,6 +21,13 @@
       "successTitle": "Account created",
       "successDescription": "A confirmation email has been sent. Please check your inbox and follow the instructions.",
       "alreadyHaveAccount": "Already have an account? Log in"
+    },
+    "verify": {
+      "heading": "Verify Your Account",
+      "description": "A verification email has been sent to your email address. Please check your inbox and click the link to verify your account.",
+      "resendButton": "Resend Verification Email",
+      "successMessage": "Verification email successfully",
+      "errorMessage": "Please try again later or contact support."
     }
   }
 }
