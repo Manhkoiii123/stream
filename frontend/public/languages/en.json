@@ -1,5 +1,21 @@
 {
   "home": {
     "title": "Home"
+  },
+  "auth": {
+    "createAccount": {
+      "heading": "Sign up for Stream",
+      "backButtonLabel": "Already have an account? Log in",
+      "usernameLabel": "Username",
+      "usernamePlaceholder": "Manhtranduc",
+      "usernameDescription": "Please enter your name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "manhtranduc0202@gmail.com",
+      "emailDescription": "Please enter your email",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "********",
+      "passwordDescription": "Please enter password",
+      "submit": "Sign Up"
+    }
   }
 }

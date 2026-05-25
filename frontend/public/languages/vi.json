@@ -1,5 +1,21 @@
 {
   "home": {
     "title": "Trang chủ"
+  },
+  "auth": {
+    "createAccount": {
+      "heading": "Đăng ký Stream",
+      "backButtonLabel": "Đã có tài khoản? Đăng nhập",
+      "usernameLabel": "Tên đăng nhập",
+      "usernamePlaceholder": "Manhtranduc",
+      "usernameDescription": "Vui lòng nhập tên của bạn",
+      "emailLabel": "Email",
+      "emailPlaceholder": "manhtranduc0202@gmail.com",
+      "emailDescription": "Vui lòng nhập email của bạn",
+      "passwordLabel": "Mật khẩu",
+      "passwordPlaceholder": "********",
+      "passwordDescription": "Vui lòng nhập mật khẩu",
+      "submit": "Đăng ký"
+    }
   }
 }

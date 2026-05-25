@@ -4,6 +4,7 @@ import "./globals.css";
 import ApolloClientProvider from "@/providers/ApolloClientProvider";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,11 +21,13 @@ export default async function RootLayout({
   const locale = await getLocale();
   const messages = await getMessages();
   return (
-    <html lang={locale}>
-      <body className={inter.className}>
+    <html lang={locale} suppressHydrationWarning>
+      <body className={`${inter.className} h-screen`}>
         <ApolloClientProvider>
           <NextIntlClientProvider messages={messages}>
-            {children}
+            <ThemeProvider attribute={"class"} defaultTheme="dark">
+              {children}
+            </ThemeProvider>
           </NextIntlClientProvider>
         </ApolloClientProvider>
       </body>
