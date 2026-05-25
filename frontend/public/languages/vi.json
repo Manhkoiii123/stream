@@ -28,6 +28,20 @@
       "resendButton": "Gửi lại Email Xác nhận",
       "successMessage": "Email xác nhận thành công. ",
       "errorMessage": "Vui lòng thử lại sau hoặc liên hệ bộ phận hỗ trợ."
+    },
+    "login": {
+      "heading": "Đăng nhập vào TeaStream",
+      "backButtonLabel": "Chưa có tài khoản? Đăng ký!",
+      "pinLabel": "Mã 6 chữ số",
+      "pinDescription": "Nhập mã từ ứng dụng của bạn để xác thực.",
+      "loginLabel": "Tên đăng nhập",
+      "loginDescription": "Tên hoặc email của bạn mà bạn đã nhập khi đăng ký.",
+      "passwordLabel": "Mật khẩu",
+      "passwordDescription": "Mật khẩu bạn đã nhập khi đăng ký.",
+      "forgotPassword": "Quên mật khẩu?",
+      "submitButton": "Đăng nhập",
+      "successMessage": "Bạn đã đăng nhập thành công",
+      "errorMessage": "Lỗi khi đăng nhập vào hệ thống"
     }
   }
 }

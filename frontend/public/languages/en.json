@@ -28,6 +28,20 @@
       "resendButton": "Resend Verification Email",
       "successMessage": "Verification email successfully",
       "errorMessage": "Please try again later or contact support."
+    },
+    "login": {
+      "heading": "Log in to TeaStream",
+      "backButtonLabel": "Don't have an account? Sign up!",
+      "pinLabel": "6-digit code",
+      "pinDescription": "Enter the code from your app for authentication.",
+      "loginLabel": "Login",
+      "loginDescription": "Your name or email that you entered during registration.",
+      "passwordLabel": "Password",
+      "passwordDescription": "Password you entered during registration.",
+      "forgotPassword": "Forgot password?",
+      "submitButton": "Login",
+      "successMessage": "You have successfully logged in",
+      "errorMessage": "Error logging into system"
     }
   }
 }
