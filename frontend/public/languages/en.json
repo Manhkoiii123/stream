@@ -15,7 +15,12 @@
       "passwordLabel": "Password",
       "passwordPlaceholder": "********",
       "passwordDescription": "Please enter password",
-      "submit": "Sign Up"
+      "submit": "Sign Up",
+      "successToast": "Your account has been created successfully. Please verify your email to complete registration.",
+      "errorToast": "Registration failed. Please try again or contact support.",
+      "successTitle": "Account created",
+      "successDescription": "A confirmation email has been sent. Please check your inbox and follow the instructions.",
+      "alreadyHaveAccount": "Already have an account? Log in"
     }
   }
 }

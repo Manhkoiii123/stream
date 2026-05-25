@@ -1,9 +1,12 @@
 import CreateAccountForm from "@/components/features/auth/forms/CreateAccountForm";
 import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Create Account",
-};
+import { getTranslations } from "next-intl/server";
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("auth.createAccount");
+  return {
+    title: t("heading"),
+  };
+}
 const CreateAccountPage = () => {
   return <CreateAccountForm />;
 };

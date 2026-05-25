@@ -594,6 +594,19 @@ export type VerificationInput = {
   token: Scalars['String']['input'];
 };
 
+export type CreateUserInput = {
+  email: string;
+  password: string;
+  username: string;
+};
+
+export type CreateUserMutationVariables = Exact<{
+  data: CreateUserInput;
+}>;
+
+
+export type CreateUserMutation = { createUser: { id: string, username: string, email: string } };
+
 export type FindChannelByUsernameQueryVariables = Exact<{
   username: string;
 }>;
@@ -602,6 +615,41 @@ export type FindChannelByUsernameQueryVariables = Exact<{
 export type FindChannelByUsernameQuery = { findChannelByUsername: { username: string, avatar: string | null, displayName: string, stream: { title: string } } };
 
 
+export const CreateUserDocument = gql`
+    mutation CreateUser($data: CreateUserInput!) {
+  createUser(data: $data) {
+    id
+    username
+    email
+  }
+}
+    `;
+export type CreateUserMutationFn = Apollo.MutationFunction<CreateUserMutation, CreateUserMutationVariables>;
+
+/**
+ * __useCreateUserMutation__
+ *
+ * To run a mutation, you first call `useCreateUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createUserMutation, { data, loading, error }] = useCreateUserMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useCreateUserMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CreateUserMutation, CreateUserMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useMutation<CreateUserMutation, CreateUserMutationVariables>(CreateUserDocument, options);
+      }
+export type CreateUserMutationHookResult = ReturnType<typeof useCreateUserMutation>;
+export type CreateUserMutationResult = Apollo.MutationResult<CreateUserMutation>;
+export type CreateUserMutationOptions = Apollo.BaseMutationOptions<CreateUserMutation, CreateUserMutationVariables>;
 export const FindChannelByUsernameDocument = gql`
     query FindChannelByUsername($username: String!) {
   findChannelByUsername(username: $username) {

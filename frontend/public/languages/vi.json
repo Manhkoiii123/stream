@@ -15,7 +15,12 @@
       "passwordLabel": "Mật khẩu",
       "passwordPlaceholder": "********",
       "passwordDescription": "Vui lòng nhập mật khẩu",
-      "submit": "Đăng ký"
+      "submit": "Đăng ký",
+      "successToast": "Tạo tài khoản thành công. Vui lòng kiểm tra email để xác nhận đăng ký.",
+      "errorToast": "Đăng ký thất bại. Vui lòng thử lại hoặc liên hệ bộ phận hỗ trợ.",
+      "successTitle": "Tài khoản đã được tạo",
+      "successDescription": "Email xác nhận đã được gửi. Vui lòng kiểm tra hộp thư đến và làm theo hướng dẫn.",
+      "alreadyHaveAccount": "Đã có tài khoản? Đăng nhập"
     }
   }
 }
