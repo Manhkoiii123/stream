@@ -114,7 +114,16 @@ const LoginForm = () => {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t("passwordLabel")}</FormLabel>
+                    <div className="flex justify-between items-center">
+                      <FormLabel>{t("passwordLabel")}</FormLabel>
+
+                      <Link
+                        href="/account/forgot-password"
+                        className="ml-auto inline-block text-sm"
+                      >
+                        {t("forgotPassword")}
+                      </Link>
+                    </div>
                     <FormControl>
                       <Input
                         placeholder="••••••••"
@@ -135,12 +144,6 @@ const LoginForm = () => {
               {t("submitButton")}
             </Button>
           </div>
-          <Link
-            href="/account/forgot-password"
-            className="text-sm text-muted-foreground hover:text-foreground"
-          >
-            {t("forgotPassword")}
-          </Link>
         </form>
       </Form>
     </AuthWrapper>

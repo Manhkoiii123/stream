@@ -42,6 +42,27 @@
       "submitButton": "Đăng nhập",
       "successMessage": "Bạn đã đăng nhập thành công",
       "errorMessage": "Lỗi khi đăng nhập vào hệ thống"
+    },
+    "resetPassword": {
+      "heading": "Đặt lại mật khẩu",
+      "backButtonLabel": "Đã có tài khoản? Đăng nhập",
+      "emailLabel": "Email",
+      "emailDescription": "Email của bạn đã dùng khi đăng ký.",
+      "submitButton": "Đặt lại mật khẩu",
+      "successAlertTitle": "Liên kết đã được gửi",
+      "successAlertDescription": "Chúng tôi đã gửi liên kết đặt lại mật khẩu tới email của bạn. Nếu đã bật thông báo Telegram, liên kết cũng đã được gửi tới đó.",
+      "errorMessage": "Lỗi khi đặt lại mật khẩu"
+    },
+    "newPassword": {
+      "heading": "Mật khẩu mới",
+      "backButtonLabel": "Đã có tài khoản? Đăng nhập",
+      "passwordLabel": "Mật khẩu mới",
+      "passwordDescription": "Mật khẩu bạn đã nhập khi đăng ký.",
+      "passwordRepeatLabel": "Nhập lại mật khẩu",
+      "passwordRepeatDescription": "Nhập lại mật khẩu mới để xác nhận.",
+      "submitButton": "Đặt lại mật khẩu",
+      "successMessage": "Mật khẩu đã được thay đổi thành công",
+      "errorMessage": "Lỗi khi thiết lập mật khẩu mới"
     }
   }
 }
