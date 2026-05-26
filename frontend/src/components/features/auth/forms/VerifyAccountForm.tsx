@@ -1,6 +1,7 @@
 "use client";
 import AuthWrapper from "@/components/features/auth/AuthWrapper";
 import { useVerifyAccountMutation } from "@/graphql/generated/output";
+import { useAuth } from "@/hooks/user-auth";
 import { Loader } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -12,9 +13,10 @@ const VerifyAccountForm = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const token = searchParams.get("token") ?? "";
-
+  const { auth } = useAuth();
   const [verify] = useVerifyAccountMutation({
     onCompleted() {
+      auth();
       toast.success(t("successMessage"));
       router.push("/dashboard/settings");
     },

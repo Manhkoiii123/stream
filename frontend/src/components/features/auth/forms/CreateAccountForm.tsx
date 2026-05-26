@@ -18,12 +18,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 import { useCreateUserMutation } from "@/graphql/generated/output";
 import { toast } from "sonner";
 import { useState } from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Circle, CircleCheck } from "lucide-react";
+import { useAuth } from "@/hooks/user-auth";
 
 const CreateAccountForm = () => {
   const [isSuccess, setIsSuccess] = useState(false);

@@ -25,12 +25,14 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
+import { useAuth } from "@/hooks/user-auth";
 
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isShowTwoFactor, setIsShowTwoFactor] = useState(false);
   const t = useTranslations("auth.login");
   const router = useRouter();
+  const { auth } = useAuth();
   const form = useForm<TypeLoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -44,6 +46,7 @@ const LoginForm = () => {
       if (data.login.message) {
         setIsShowTwoFactor(true);
       } else {
+        auth();
         toast.success(t("successMessage"));
         setIsLoading(false);
         router.push("/dashboard/settings");
