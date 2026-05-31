@@ -140,7 +140,7 @@ export class SessionService {
 						)
 					)
 				}
-				resolver({ user })
+				resolver({ user, message: 'Login Successful' })
 			})
 		})
 	}
@@ -158,7 +158,7 @@ export class SessionService {
 				req.res?.clearCookie(
 					this.configService.getOrThrow<string>('SESSION_NAME')
 				)
-				resolver({ message: 'Logged out successfully' })
+				resolver(true)
 			})
 		})
 	}

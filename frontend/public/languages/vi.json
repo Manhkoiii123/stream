@@ -2,6 +2,54 @@
   "home": {
     "title": "Trang chủ"
   },
+  "layout": {
+    "logo": {
+      "platform": "Nền tảng cho stream"
+    },
+    "headerMenu": {
+      "login": "Đăng nhập",
+      "register": "Đăng ký",
+      "profileMenu": {
+        "notifications": {
+          "heading": "Thông báo",
+          "loading": "Đang tải...",
+          "empty": "Bạn không có thông báo nào"
+        },
+        "logoutSuccess": "Bạn đã đăng xuất thành công",
+        "channel": "Kênh của tôi",
+        "dashboard": "Bảng điều khiển",
+        "logout": "Đăng xuất"
+      }
+    },
+    "search": {
+      "placeholder": "Tìm kiếm"
+    },
+    "dashboardNav": {
+      "settings": "Cài đặt",
+      "streamSettings": "Cài đặt stream",
+      "keys": "Khóa stream",
+      "chatSettings": "Cài đặt chat",
+      "followers": "Người theo dõi",
+      "sponsors": "Nhà tài trợ",
+      "premium": "Gói cao cấp",
+      "transactions": "Giao dịch"
+    },
+    "sidebarHeader": {
+      "expand": "Mở rộng",
+      "collapse": "Thu gọn",
+      "navigation": "Điều hướng",
+      "forYou": "Dành cho bạn"
+    },
+    "userNav": {
+      "home": "Trang chủ",
+      "categories": "Thể loại",
+      "streams": "Phát trực tiếp",
+      "recommended": "Gợi ý"
+    },
+    "recommended": {
+      "heading": "Gợi ý"
+    }
+  },
   "auth": {
     "createAccount": {
       "heading": "Đăng ký Stream",

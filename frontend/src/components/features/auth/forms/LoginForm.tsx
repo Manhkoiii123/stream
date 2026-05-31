@@ -44,6 +44,7 @@ const LoginForm = () => {
   const [login] = useLoginUserMutation({
     onCompleted(data) {
       if (data.login.message) {
+        auth();
         setIsShowTwoFactor(true);
       } else {
         auth();
@@ -80,7 +81,7 @@ const LoginForm = () => {
                   <FormLabel>{t("pinLabel")}</FormLabel>
                   <FormControl>
                     <InputOTP maxLength={6} {...field}>
-                      <InputOTPGroup>
+                      <InputOTPGroup className="flex items-center justify-between w-full">
                         <InputOTPSlot index={0}></InputOTPSlot>
                         <InputOTPSlot index={1}></InputOTPSlot>
                         <InputOTPSlot index={2}></InputOTPSlot>

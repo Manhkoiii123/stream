@@ -95,5 +95,3 @@ const ResetPasswordForm = () => {
 };
 
 export default ResetPasswordForm;
-
-// 2 24 35

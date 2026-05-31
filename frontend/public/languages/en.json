@@ -2,6 +2,55 @@
   "home": {
     "title": "Home"
   },
+  "layout": {
+    "logo": {
+      "platform": "Platform for streaming"
+    },
+    "headerMenu": {
+      "login": "Log in",
+      "register": "Register",
+      "profileMenu": {
+        "notifications": {
+          "heading": "Notifications",
+          "loading": "Loading...",
+          "empty": "You have no notifications"
+        },
+        "logoutSuccess": "You have successfully logged out",
+        "channel": "My channel",
+        "dashboard": "Dashboard",
+        "logout": "Log out"
+      }
+    },
+    "search": {
+      "placeholder": "Search"
+    },
+    "dashboardNav": {
+      "settings": "Settings",
+      "streamSettings": "Stream settings",
+      "keys": "Stream keys",
+      "chatSettings": "Chat settings",
+      "followers": "Followers",
+      "sponsors": "Sponsors",
+      "premium": "Premium plans",
+      "transactions": "Transactions"
+    },
+    "sidebarHeader": {
+      "expand": "Expand",
+      "collapse": "Collapse",
+      "navigation": "Navigation",
+      "forYou": "For you"
+    },
+    "userNav": {
+      "home": "Home",
+      "categories": "Categories",
+      "streams": "Streams",
+      "recommended": "Recommended"
+    },
+    "recommended": {
+      "heading": "Recommendations"
+    }
+  },
+
   "auth": {
     "createAccount": {
       "heading": "Sign up for Stream",
