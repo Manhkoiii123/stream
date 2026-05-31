@@ -1,4 +1,5 @@
 "use client";
+import Notifications from "@/components/features/layout/header/notifications/Notifications";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -32,31 +33,34 @@ const ProfileMenu = () => {
   return isLoadingProfile || !user ? (
     <Loader2 className="size-6 animate-spin text-muted-foreground"></Loader2>
   ) : (
-    <DropdownMenu>
-      <DropdownMenuTrigger>
-        <ChannelAvatar channel={user} />
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-[230px]">
-        <div className="flex items-center gap-x-3 p-2">
+    <>
+      <Notifications />
+      <DropdownMenu>
+        <DropdownMenuTrigger>
           <ChannelAvatar channel={user} />
-          <h2 className="font-medium text-foreground">{user.username}</h2>
-        </div>
-        <DropdownMenuSeparator />
-        <Link href={`/${user.username}`}>
-          <DropdownMenuItem>
-            <User className="mr-2 size-2" /> {t("channel")}
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end" className="w-[230px]">
+          <div className="flex items-center gap-x-3 p-2">
+            <ChannelAvatar channel={user} />
+            <h2 className="font-medium text-foreground">{user.username}</h2>
+          </div>
+          <DropdownMenuSeparator />
+          <Link href={`/${user.username}`}>
+            <DropdownMenuItem>
+              <User className="mr-2 size-2" /> {t("channel")}
+            </DropdownMenuItem>
+          </Link>
+          <Link href={`/dashboard/settings`}>
+            <DropdownMenuItem>
+              <LayoutDashboard className="mr-2 size-2" /> {t("dashboard")}
+            </DropdownMenuItem>
+          </Link>
+          <DropdownMenuItem onSelect={() => logout()}>
+            <LogOut className="mr-2 size-2" /> {t("logout")}
           </DropdownMenuItem>
-        </Link>
-        <Link href={`/dashboard/settings`}>
-          <DropdownMenuItem>
-            <LayoutDashboard className="mr-2 size-2" /> {t("dashboard")}
-          </DropdownMenuItem>
-        </Link>
-        <DropdownMenuItem onSelect={() => logout()}>
-          <LogOut className="mr-2 size-2" /> {t("logout")}
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </>
   );
 };
 

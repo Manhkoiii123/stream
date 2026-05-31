@@ -6,18 +6,5 @@ import { useCurrent } from "@/hooks/useCurrent";
 
 export default function Home() {
   const { isLoadingProfile, user } = useCurrent();
-  return (
-    <div>
-      {isLoadingProfile ? (
-        <div>Loading...</div>
-      ) : (
-        <ChannelAvatar
-          channel={{
-            username: user?.username!,
-            avatar: user?.avatar || null,
-          }}
-        ></ChannelAvatar>
-      )}
-    </div>
-  );
+  return <div>{isLoadingProfile ? <div>Loading...</div> : <></>}</div>;
 }
