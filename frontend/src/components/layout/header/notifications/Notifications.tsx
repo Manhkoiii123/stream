@@ -1,4 +1,4 @@
-import NotificationList from "@/components/features/layout/header/notifications/NotificationList";
+import NotificationList from "@/components/layout/header/notifications/NotificationList";
 import {
   Popover,
   PopoverContent,

@@ -1,4 +1,4 @@
-import HeaderMenu from "@/components/features/layout/header/HeaderMenu";
+import HeaderMenu from "@/components/layout/header/HeaderMenu";
 import Logo from "./Logo";
 import Search from "./Search";
 

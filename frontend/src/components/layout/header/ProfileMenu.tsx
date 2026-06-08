@@ -1,5 +1,5 @@
 "use client";
-import Notifications from "@/components/features/layout/header/notifications/Notifications";
+import Notifications from "@/components/layout/header/notifications/Notifications";
 import {
   DropdownMenu,
   DropdownMenuContent,

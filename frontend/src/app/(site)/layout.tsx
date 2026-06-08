@@ -1,4 +1,6 @@
-import Header from "@/components/features/layout/header/Header";
+import Header from "@/components/layout/header/Header";
+import LayoutContainer from "@/components/layout/LayoutContainer";
+import Sidebar from "@/components/layout/sidebar/Sidebar";
 
 export default async function RootLayout({
   children,
@@ -11,7 +13,8 @@ export default async function RootLayout({
         <div className="fixed inset-y-0 z-50 h-[75px] w-full">
           <Header />
         </div>
-        <main className="mt-[75px]">{children}</main>
+        <Sidebar />
+        <LayoutContainer>{children}</LayoutContainer>
       </div>
     </div>
   );

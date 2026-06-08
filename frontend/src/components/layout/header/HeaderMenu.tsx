@@ -1,5 +1,5 @@
 "use client";
-import ProfileMenu from "@/components/features/layout/header/ProfileMenu";
+import ProfileMenu from "@/components/layout/header/ProfileMenu";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/user-auth";
 import { useTranslations } from "next-intl";
