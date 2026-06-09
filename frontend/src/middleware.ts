@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 
 export default function middleware(request: NextRequest) {
-  const session = request.cookies.get("session")?.value;
+  const session = request.cookies.get("stream.sid")?.value;
 
   const isAuthPage = request.url.includes("/account");
 

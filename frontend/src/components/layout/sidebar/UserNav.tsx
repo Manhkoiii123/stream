@@ -1,3 +1,4 @@
+import RecommendedChannels from "@/components/layout/sidebar/RecommendedChannels";
 import { Route } from "@/components/layout/sidebar/route.interface";
 import SidebarItem from "@/components/layout/sidebar/SidebarItem";
 import { Folder, Home, Radio } from "lucide-react";
@@ -27,6 +28,7 @@ const UserNav = () => {
       {routes.map((route, index) => (
         <SidebarItem route={route} key={index} />
       ))}
+      <RecommendedChannels />
     </div>
   );
 };

@@ -45,7 +45,8 @@ const LoginForm = () => {
     onCompleted(data) {
       if (data.login.message) {
         auth();
-        setIsShowTwoFactor(true);
+        router.push("/dashboard/settings");
+        // setIsShowTwoFactor(true);
       } else {
         auth();
         toast.success(t("successMessage"));

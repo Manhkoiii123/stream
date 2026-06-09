@@ -112,5 +112,23 @@
       "successMessage": "Mật khẩu đã được thay đổi thành công",
       "errorMessage": "Lỗi khi thiết lập mật khẩu mới"
     }
+  },
+  "dashboard": {
+    "settings": {
+      "header": {
+        "heading": "Cài đặt",
+        "description": "Ở đây bạn có thể quản lý các cài đặt của mình",
+        "profile": "Hồ sơ",
+        "account": "Tài khoản",
+        "appearance": "Giao diện",
+        "notifications": "Thông báo",
+        "sessions": "Phiên đăng nhập"
+      }
+    }
+  },
+  "components": {
+    "liveBadge": {
+      "text": "Trực tiếp"
+    }
   }
 }
