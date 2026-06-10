@@ -142,6 +142,21 @@
           "errorUpdateMessage": "Error updating profile image.",
           "successRemoveMessage": "Profile image removed successfully.",
           "errorRemoveMessage": "Error removing profile image."
+        },
+        "info": {
+          "heading": "Profile settings",
+          "usernameLabel": "Username",
+          "usernamePlaceholder": "Manhtranduc",
+          "usernameDescription": "Other users will know you by this name.",
+          "displayNameLabel": "Display name",
+          "displayNamePlaceholder": "Manhtranduc",
+          "displayNameDescription": "You can capitalize the username however you like.",
+          "bioLabel": "Bio",
+          "bioPlaceholder": "I love programming and coding",
+          "bioDescription": "Your bio must be 300 characters or fewer.",
+          "submitButton": "Save changes",
+          "successMessage": "Profile updated successfully",
+          "errorMessage": "Error updating profile"
         }
       }
     }

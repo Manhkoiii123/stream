@@ -141,6 +141,21 @@
           "errorUpdateMessage": "Đã xảy ra lỗi khi cập nhật ảnh hồ sơ.",
           "successRemoveMessage": "Xóa ảnh hồ sơ thành công.",
           "errorRemoveMessage": "Đã xảy ra lỗi khi xóa ảnh hồ sơ."
+        },
+        "info": {
+          "heading": "Cài đặt hồ sơ",
+          "usernameLabel": "Tên đăng nhập",
+          "usernamePlaceholder": "Manhtranduc",
+          "usernameDescription": "Người dùng khác sẽ biết bạn qua tên này.",
+          "displayNameLabel": "Tên hiển thị",
+          "displayNamePlaceholder": "Manhtranduc",
+          "displayNameDescription": "Bạn có thể viết hoa tên đăng nhập theo ý muốn.",
+          "bioLabel": "Giới thiệu",
+          "bioPlaceholder": "Tôi thích lập trình",
+          "bioDescription": "Thông tin giới thiệu không được quá 300 ký tự.",
+          "submitButton": "Lưu thay đổi",
+          "successMessage": "Cập nhật hồ sơ thành công",
+          "errorMessage": "Lỗi khi cập nhật hồ sơ"
         }
       }
     }
