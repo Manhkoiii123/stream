@@ -148,6 +148,10 @@
   "components": {
     "liveBadge": {
       "text": "Trực tiếp"
+    },
+    "confirmModal": {
+      "cancel": "Hủy",
+      "continue": "Tiếp tục"
     }
   }
 }

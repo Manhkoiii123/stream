@@ -149,6 +149,10 @@
   "components": {
     "liveBadge": {
       "text": "Live"
+    },
+    "confirmModal": {
+      "cancel": "Cancel",
+      "continue": "Continue"
     }
   }
 }

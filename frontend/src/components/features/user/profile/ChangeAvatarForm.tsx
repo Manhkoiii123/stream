@@ -2,6 +2,7 @@
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import ChannelAvatar from "@/components/ui/elements/ChannelAvatar";
+import { ConfirmModal } from "@/components/ui/elements/ConfirmModal";
 import FormWrapper from "@/components/ui/elements/FormWrapper";
 import { Form, FormField } from "@/components/ui/form";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -97,14 +98,19 @@ const ChangeAvatarForm = () => {
                       {t("updateButton")}
                     </Button>
                     {user?.avatar && (
-                      <Button
-                        variant={"ghost"}
-                        size={"lgIcon"}
-                        disabled={isRemoveLoading || isLoadingUpdate}
-                        onClick={() => remove()}
+                      <ConfirmModal
+                        heading={t("confirmModal.heading")}
+                        message={t("confirmModal.message")}
+                        onConfirm={() => remove()}
                       >
-                        <Trash className="size-4" />
-                      </Button>
+                        <Button
+                          variant={"ghost"}
+                          size={"lgIcon"}
+                          disabled={isRemoveLoading || isLoadingUpdate}
+                        >
+                          <Trash className="size-4" />
+                        </Button>
+                      </ConfirmModal>
                     )}
                   </div>
                   <p className="text-sm text-muted-foreground">{t("info")}</p>
