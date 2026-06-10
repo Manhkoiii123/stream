@@ -1,32 +1,37 @@
 import Heading from "@/components/ui/elements/Heading";
 import { useTranslations } from "next-intl";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ChangeAvatarForm from "@/components/features/user/profile/ChangeAvatarForm";
 const UserSettings = () => {
-  const t = useTranslations("dashboard.settings.header");
+  const t = useTranslations("dashboard.settings");
   return (
     <div className="lg:px-10">
       <Heading
-        title={t("heading")}
-        description={t("description")}
+        title={t("header.heading")}
+        description={t("header.description")}
         size="lg"
       ></Heading>
 
       <Tabs defaultValue="profile" className="w-full mt-3">
         <TabsList className="grid grid-cols-5 w-full max-w-3xl">
-          <TabsTrigger value="profile">{t("profile")}</TabsTrigger>
-          <TabsTrigger value="account">{t("account")}</TabsTrigger>
-          <TabsTrigger value="appearance">{t("appearance")}</TabsTrigger>
-          <TabsTrigger value="notifications">{t("notifications")}</TabsTrigger>
-          <TabsTrigger value="sessions">{t("sessions")}</TabsTrigger>
+          <TabsTrigger value="profile">{t("header.profile")}</TabsTrigger>
+          <TabsTrigger value="account">{t("header.account")}</TabsTrigger>
+          <TabsTrigger value="appearance">{t("header.appearance")}</TabsTrigger>
+          <TabsTrigger value="header.notifications">
+            {t("header.notifications")}
+          </TabsTrigger>
+          <TabsTrigger value="sessions">{t("header.sessions")}</TabsTrigger>
         </TabsList>
-        <TabsContent value="profile">profile</TabsContent>
+        <TabsContent value="profile">
+          <div className="mt-5 space-y-6">
+            <Heading
+              title={t("profile.header.heading")}
+              description={t("profile.header.description")}
+            />
+            <ChangeAvatarForm />
+          </div>
+        </TabsContent>
         <TabsContent value="account">account</TabsContent>
         <TabsContent value="appearance">appearance</TabsContent>
         <TabsContent value="notifications">notifications</TabsContent>

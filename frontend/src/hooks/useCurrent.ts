@@ -20,5 +20,6 @@ export function useCurrent() {
   return {
     user: data?.findProfile,
     isLoadingProfile: loading,
+    refetch,
   };
 }

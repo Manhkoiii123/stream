@@ -5,6 +5,7 @@ import ChannelAvatar from "@/components/ui/elements/ChannelAvatar";
 import ChannelVerified from "@/components/ui/elements/ChannelVerified";
 import Hints from "@/components/ui/elements/Hints";
 import LiveBadge from "@/components/ui/elements/LiveBadge";
+import { Skeleton } from "@/components/ui/skeleton";
 import { FindRecommendedChannelsQuery } from "@/graphql/generated/output";
 import { useSidebar } from "@/hooks/useSidebar";
 import { cn } from "@/lib/utils";
@@ -52,4 +53,8 @@ export function ChannelItem({ channel }: ChannelItemProps) {
       </Link>
     </Button>
   );
+}
+
+export function ChangeAvatarSkeleton() {
+  return <Skeleton className="mt-3 h-11 w-full rounded-full"></Skeleton>;
 }

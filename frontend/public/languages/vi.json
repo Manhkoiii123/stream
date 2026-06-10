@@ -123,6 +123,25 @@
         "appearance": "Giao diện",
         "notifications": "Thông báo",
         "sessions": "Phiên đăng nhập"
+      },
+      "profile": {
+        "header": {
+          "heading": "Hồ sơ",
+          "description": "Tùy chỉnh hồ sơ của bạn, cập nhật ảnh đại diện, thay đổi thông tin cá nhân và thêm liên kết đến các mạng xã hội để làm cho trang cá nhân của bạn trở nên hấp dẫn hơn đối với những người dùng khác."
+        },
+        "avatar": {
+          "heading": "Ảnh hồ sơ",
+          "updateButton": "Cập nhật ảnh hồ sơ",
+          "confirmModal": {
+            "heading": "Xóa ảnh đại diện",
+            "message": "Bạn có chắc chắn muốn xóa ảnh hồ sơ không? Hành động này không thể được hoàn tác."
+          },
+          "info": "Các định dạng được hỗ trợ: JPG, JPEG, PNG hoặc GIF. Kích thước tối đa: 10 MB.",
+          "successUpdateMessage": "Cập nhật ảnh hồ sơ thành công.",
+          "errorUpdateMessage": "Đã xảy ra lỗi khi cập nhật ảnh hồ sơ.",
+          "successRemoveMessage": "Xóa ảnh hồ sơ thành công.",
+          "errorRemoveMessage": "Đã xảy ra lỗi khi xóa ảnh hồ sơ."
+        }
       }
     }
   },

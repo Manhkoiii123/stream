@@ -5,6 +5,7 @@ import ApolloClientProvider from "@/providers/ApolloClientProvider";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { ThemeProvider } from "@/providers/ThemeProvider";
+import { Toaster } from "@/components/ui/sonner";
 import { ToastProvider } from "@/components/ui/toast";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -28,6 +29,7 @@ export default async function RootLayout({
           <NextIntlClientProvider messages={messages}>
             <ThemeProvider attribute={"class"} defaultTheme="dark">
               <ToastProvider>{children}</ToastProvider>
+              <Toaster />
             </ThemeProvider>
           </NextIntlClientProvider>
         </ApolloClientProvider>

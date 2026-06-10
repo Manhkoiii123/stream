@@ -124,6 +124,25 @@
         "appearance": "Appearance",
         "notifications": "Notifications",
         "sessions": "Sessions"
+      },
+      "profile": {
+        "header": {
+          "heading": "Profile",
+          "description": "Customize your profile, update your avatar, change information about yourself, and add links to social networks to make your page more attractive to other users."
+        },
+        "avatar": {
+          "heading": "Profile Image",
+          "updateButton": "Update Profile Image",
+          "confirmModal": {
+            "heading": "Delete Avatar",
+            "message": "Are you sure you want to delete the profile image? This action cannot be undone."
+          },
+          "info": "Supported formats: JPG, JPEG, PNG or GIF. Maximum size: 10 MB.",
+          "successUpdateMessage": "Profile image updated successfully.",
+          "errorUpdateMessage": "Error updating profile image.",
+          "successRemoveMessage": "Profile image removed successfully.",
+          "errorRemoveMessage": "Error removing profile image."
+        }
       }
     }
   },

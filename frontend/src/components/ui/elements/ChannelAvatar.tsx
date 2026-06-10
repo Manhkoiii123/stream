@@ -8,6 +8,7 @@ const avatarSizes = cva("", {
       sm: "size-7",
       default: "size-9",
       lg: "size-14",
+      xl: "size-32",
     },
   },
   defaultVariants: {
@@ -28,7 +29,9 @@ const ChannelAvatar = ({ channel, isLive, size }: ChannelAvatarProps) => {
           src={channel.avatar ?? undefined}
           className="object-cover"
         />
-        <AvatarFallback>{channel.username?.[0] ?? "?"}</AvatarFallback>
+        <AvatarFallback className={cn(size === "xl" && "text-xl")}>
+          {channel.username?.[0] ?? "?"}
+        </AvatarFallback>
       </Avatar>
     </div>
   );

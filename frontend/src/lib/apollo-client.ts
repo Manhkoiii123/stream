@@ -1,9 +1,12 @@
 import { InMemoryCache } from "@apollo/client";
 import { ApolloClient, createHttpLink } from "@apollo/client";
-
-const httpLink = createHttpLink({
+import createUploadLink from "apollo-upload-client/createUploadLink.mjs";
+const httpLink = createUploadLink({
   uri: process.env.NEXT_PUBLIC_SERVER_URL,
   credentials: "include",
+  headers: {
+    "Apollo-Require-Preflight": "true",
+  },
 });
 export const client = new ApolloClient({
   link: httpLink,

@@ -1,5 +1,8 @@
 "use client";
-import { ChannelItem } from "@/components/layout/sidebar/ChannelItem";
+import {
+  ChangeAvatarSkeleton,
+  ChannelItem,
+} from "@/components/layout/sidebar/ChannelItem";
 import { Separator } from "@/components/ui/separator";
 import { useFindRecommendedChannelsQuery } from "@/graphql/generated/output";
 import { useSidebar } from "@/hooks/useSidebar";
@@ -20,7 +23,9 @@ const RecommendedChannels = () => {
         </h2>
       )}
       {isLoadingRecommended ? (
-        <div>Loading...</div>
+        Array.from({ length: 7 }).map((_, index) => (
+          <ChangeAvatarSkeleton key={index} />
+        ))
       ) : (
         <>
           {channels.map((item, index) => (
