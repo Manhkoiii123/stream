@@ -105,7 +105,7 @@ const ChangeInfoForm = () => {
               disabled={!isValid || !isDirty || isLoadingChangeInfo}
             >
               {isLoadingChangeInfo ? (
-                <Loader2 className="w-4 h-4 mr-2" />
+                <Loader2 className="size-4 animate-spin" />
               ) : null}
               {t("submitButton")}
             </Button>
