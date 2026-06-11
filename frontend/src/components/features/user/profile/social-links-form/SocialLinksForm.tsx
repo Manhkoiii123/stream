@@ -13,8 +13,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useCreateSocialLinkMutation } from "@/graphql/generated/output";
-import { useCurrent } from "@/hooks/useCurrent";
+import {
+  useCreateSocialLinkMutation,
+  useFindSocialLinksQuery,
+} from "@/graphql/generated/output";
 import {
   socialLinkSchema,
   TypeSocialLinkSchema,
@@ -29,7 +31,7 @@ const SocialLinksForm = () => {
   const t = useTranslations(
     "dashboard.settings.profile.socialLinks.createForm",
   );
-  const { refetch } = useCurrent();
+  const { refetch } = useFindSocialLinksQuery();
 
   const form = useForm<TypeSocialLinkSchema>({
     resolver: zodResolver(socialLinkSchema),
