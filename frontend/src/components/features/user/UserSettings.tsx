@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ChangeAvatarForm from "@/components/features/user/profile/ChangeAvatarForm";
 import ChangeInfoForm from "@/components/features/user/profile/ChangeInfoForm";
+import SocialLinksForm from "@/components/features/user/profile/social-links-form/SocialLinksForm";
 const UserSettings = () => {
   const t = useTranslations("dashboard.settings");
   return (
@@ -32,6 +33,7 @@ const UserSettings = () => {
             />
             <ChangeAvatarForm />
             <ChangeInfoForm />
+            <SocialLinksForm />
           </div>
         </TabsContent>
         <TabsContent value="account">account</TabsContent>

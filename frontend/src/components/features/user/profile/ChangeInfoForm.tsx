@@ -121,3 +121,4 @@ export default ChangeInfoForm;
 export function ChangeInfoFormSkeleton() {
   return <Skeleton className="h-96 w-full "></Skeleton>;
 }
+

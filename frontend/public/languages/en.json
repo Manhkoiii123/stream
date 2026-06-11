@@ -157,6 +157,34 @@
           "submitButton": "Save changes",
           "successMessage": "Profile updated successfully",
           "errorMessage": "Error updating profile"
+        },
+        "socialLinks": {
+          "createForm": {
+            "heading": "Social media links",
+            "titleLabel": "Link name",
+            "titlePlaceholder": "Youtube",
+            "titleDescription": "Link text",
+            "urlLabel": "Link URL",
+            "urlPlaceholder": "https://github.com/",
+            "urlDescription": "Where does this link lead? Enter the full URL, for example https://github.com/",
+            "submitButton": "Add",
+            "successMessage": "Social network link added successfully",
+            "errorMessage": "Error adding social network link"
+          },
+          "editForm": {
+            "cancelButton": "Cancel",
+            "submitButton": "Save",
+            "titlePlaceholder": "Youtube",
+            "titleDescription": "Link text",
+            "urlPlaceholder": "https://github.com/",
+            "urlDescription": "Where does this link lead? Enter the full URL, for example https://github.com/",
+            "successUpdateMessage": "Social network link updated successfully",
+            "errorUpdateMessage": "Error updating social network link",
+            "successRemoveMessage": "Social network link removed successfully",
+            "errorRemoveMessage": "Error removing social network link"
+          },
+          "successReorderMessage": "Social network links order changed",
+          "errorReorderMessage": "Error changing social network links order"
         }
       }
     }

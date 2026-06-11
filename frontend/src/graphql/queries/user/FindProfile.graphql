@@ -5,5 +5,9 @@ query FindProfile {
     displayName
     avatar
     bio
+    socialLinks {
+      title
+      url
+    }
   }
 }

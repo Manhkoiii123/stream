@@ -1,0 +1,3 @@
+mutation DeleteSocialLink($id: String!) {
+  deleteSocialLink(id: $id)
+}

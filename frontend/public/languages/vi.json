@@ -156,6 +156,34 @@
           "submitButton": "Lưu thay đổi",
           "successMessage": "Cập nhật hồ sơ thành công",
           "errorMessage": "Lỗi khi cập nhật hồ sơ"
+        },
+        "socialLinks": {
+          "createForm": {
+            "heading": "Liên kết mạng xã hội",
+            "titleLabel": "Tên liên kết",
+            "titlePlaceholder": "Youtube",
+            "titleDescription": "Nội dung liên kết",
+            "urlLabel": "URL liên kết",
+            "urlPlaceholder": "https://github.com/",
+            "urlDescription": "Liên kết này dẫn đến đâu? Nhập đầy đủ URL, ví dụ https://github.com/",
+            "submitButton": "Thêm",
+            "successMessage": "Đã thêm liên kết mạng xã hội thành công",
+            "errorMessage": "Lỗi khi thêm liên kết mạng xã hội"
+          },
+          "editForm": {
+            "cancelButton": "Hủy",
+            "submitButton": "Lưu",
+            "titlePlaceholder": "Youtube",
+            "titleDescription": "Nội dung liên kết",
+            "urlPlaceholder": "https://github.com/",
+            "urlDescription": "Liên kết này dẫn đếu đâu? Nhập đầy đủ URL, ví dụ https://github.com/",
+            "successUpdateMessage": "Đã cập nhật liên kết mạng xã hội thành công",
+            "errorUpdateMessage": "Lỗi khi cập nhật liên kết mạng xã hội",
+            "successRemoveMessage": "Đã xóa liên kết mạng xã hội thành công",
+            "errorRemoveMessage": "Lỗi khi xóa liên kết mạng xã hội"
+          },
+          "successReorderMessage": "Đã thay đổi thứ tự liên kết mạng xã hội",
+          "errorReorderMessage": "Lỗi khi thay đổi thứ tự liên kết mạng xã hội"
         }
       }
     }
