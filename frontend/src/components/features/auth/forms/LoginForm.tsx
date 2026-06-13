@@ -40,19 +40,19 @@ const LoginForm = () => {
       password: "",
     },
   });
-  const { isValid } = form.formState;
   const [login] = useLoginUserMutation({
     onCompleted(data) {
-      if (data.login.message) {
-        auth();
-        router.push("/dashboard/settings");
-        // setIsShowTwoFactor(true);
-      } else {
+      setIsLoading(false);
+
+      if (data.login.user) {
         auth();
         toast.success(t("successMessage"));
-        setIsLoading(false);
+        router.refresh();
         router.push("/dashboard/settings");
+        return;
       }
+
+      setIsShowTwoFactor(true);
     },
     onError() {
       toast.error(t("errorMessage"));
@@ -145,7 +145,7 @@ const LoginForm = () => {
             </>
           )}
           <div className="flex items-center justify-between mt-2">
-            <Button className="flex-1" disabled={!isValid || isLoading}>
+            <Button className="flex-1" type="submit" disabled={isLoading}>
               {t("submitButton")}
             </Button>
           </div>
