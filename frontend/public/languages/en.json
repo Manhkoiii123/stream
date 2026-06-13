@@ -112,6 +112,19 @@
       "submitButton": "Reset Password",
       "successMessage": "Password changed successfully",
       "errorMessage": "Error setting new password"
+    },
+    "deactivate": {
+      "heading": "Account Deactivation",
+      "backButtonLabel": "Go to dashboard",
+      "pinLabel": "6-digit code",
+      "pinDescription": "A code has been sent to your email. If Telegram notifications are enabled, the code has also been sent there.",
+      "emailLabel": "Email",
+      "emailDescription": "Your email address used during registration.",
+      "passwordLabel": "Password",
+      "passwordDescription": "Password you entered during registration.",
+      "submitButton": "Deactivate",
+      "successMessage": "You have successfully deactivated your account",
+      "errorMessage": "Error deactivating account"
     }
   },
   "dashboard": {

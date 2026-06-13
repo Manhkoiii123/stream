@@ -111,6 +111,19 @@
       "submitButton": "Đặt lại mật khẩu",
       "successMessage": "Mật khẩu đã được thay đổi thành công",
       "errorMessage": "Lỗi khi thiết lập mật khẩu mới"
+    },
+    "deactivate": {
+      "heading": "Vô hiệu hóa tài khoản",
+      "backButtonLabel": "Đi tới bảng điều khiển",
+      "pinLabel": "Mã 6 chữ số",
+      "pinDescription": "Mã đã được gửi tới email của bạn. Nếu đã bật thông báo Telegram, mã cũng đã được gửi tới đó.",
+      "emailLabel": "Email",
+      "emailDescription": "Email của bạn đã dùng khi đăng ký.",
+      "passwordLabel": "Mật khẩu",
+      "passwordDescription": "Mật khẩu bạn đã nhập khi đăng ký.",
+      "submitButton": "Vô hiệu hóa",
+      "successMessage": "Bạn đã vô hiệu hóa tài khoản thành công",
+      "errorMessage": "Lỗi khi vô hiệu hóa tài khoản"
     }
   },
   "dashboard": {

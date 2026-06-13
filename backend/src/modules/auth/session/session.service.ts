@@ -93,7 +93,7 @@ export class SessionService {
 				]
 			}
 		})
-		if (!user) {
+		if (!user || user.isDeactivated) {
 			throw new NotFoundException('Invalid login credentials')
 		}
 		const isValidPassword = await verify(user.password, password)

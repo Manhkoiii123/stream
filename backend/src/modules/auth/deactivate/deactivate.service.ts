@@ -9,6 +9,7 @@ import { verify } from 'argon2'
 import { Request } from 'express'
 
 import { PrismaService } from '@/src/core/prisma/prisma.service'
+import { RedisService } from '@/src/core/redis/redis.service'
 import { DeactivateInput } from '@/src/modules/auth/deactivate/inputs/deactivate.input'
 import { MailService } from '@/src/modules/libs/mail/mail.service'
 import { generateToken } from '@/src/shared/utils/generate-token.utils'
@@ -20,7 +21,8 @@ export class DeactivateService {
 	public constructor(
 		private readonly prismaService: PrismaService,
 		private readonly configService: ConfigService,
-		private readonly mailService: MailService
+		private readonly mailService: MailService,
+		private readonly redisService: RedisService
 	) {}
 
 	public async deactivateAccount(
@@ -48,7 +50,9 @@ export class DeactivateService {
 		}
 		await this.validateDeactivationToken(req, pin)
 
-		return { user }
+		await this.clearSessions(user.id)
+
+		return { user, message: 'Account deactivated successfully' }
 	}
 
 	private async validateDeactivationToken(req: Request, token: string) {
@@ -73,6 +77,7 @@ export class DeactivateService {
 		await this.prismaService.token.delete({
 			where: { id: existingToken.id, type: TokenType.DEACTIVATION }
 		})
+		await this.clearSessions(existingToken.userId)
 		return destroySession(req, this.configService)
 	}
 
@@ -95,5 +100,21 @@ export class DeactivateService {
 			metadata
 		)
 		return true
+	}
+
+	private async clearSessions(userId: string) {
+		const keys = await this.redisService.keys('*')
+
+		for (const key of keys) {
+			const sessionData = await this.redisService.get(key)
+
+			if (sessionData) {
+				const session = JSON.parse(sessionData)
+
+				if (session.userId === userId) {
+					await this.redisService.del(key)
+				}
+			}
+		}
 	}
 }
