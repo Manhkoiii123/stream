@@ -185,6 +185,66 @@
           "successReorderMessage": "Đã thay đổi thứ tự liên kết mạng xã hội",
           "errorReorderMessage": "Lỗi khi thay đổi thứ tự liên kết mạng xã hội"
         }
+      },
+      "account": {
+        "header": {
+          "heading": "Tài khoản",
+          "description": "Quản lý cài đặt tài khoản của bạn, bao gồm thay đổi quyền truy cập, bảo mật và khả năng vô hiệu hóa.",
+          "securityHeading": "Bảo mật",
+          "securityDescription": "Thiết lập xác thực hai yếu tố để tăng cường bảo vệ dữ liệu của bạn.",
+          "deactivationHeading": "Vô hiệu hóa",
+          "deactivationDescription": "Nếu bạn muốn tạm thời hoặc vĩnh viễn vô hiệu hóa tài khoản, hãy sử dụng tùy chọn này. Xin lưu ý các hậu quả."
+        },
+        "email": {
+          "heading": "Địa chỉ email",
+          "emailLabel": "Email",
+          "emailDescription": "Nhập địa chỉ email mới của bạn. Hãy đảm bảo rằng nó hợp lệ, vì một thư xác nhận sẽ được gửi đến đó.",
+          "submitButton": "Lưu",
+          "successMessage": "Cập nhật email thành công",
+          "emailPlaceholder": "manhtranduc0202@gmail.com",
+          "errorMessage": "Lỗi khi cập nhật email"
+        },
+        "password": {
+          "heading": "Mật khẩu tài khoản",
+          "oldPasswordLabel": "Mật khẩu cũ",
+          "oldPasswordDescription": "Nhập mật khẩu cũ của bạn để xác minh danh tính trước khi đổi mật khẩu. Điều này cần thiết để đảm bảo an toàn tài khoản.",
+          "newPasswordLabel": "Mật khẩu mới",
+          "newPasswordDescription": "Mật khẩu mới phải có ít nhất 8 ký tự. Nên sử dụng thêm ký tự đặc biệt để tăng cường bảo mật.",
+          "submitButton": "Lưu",
+          "successMessage": "Cập nhật mật khẩu thành công",
+          "errorMessage": "Lỗi khi cập nhật mật khẩu"
+        },
+        "twoFactor": {
+          "heading": "Xác thực TOTP",
+          "description": "Tăng cường bảo mật tài khoản bằng cách bật xác thực TOTP. Lớp bảo vệ bổ sung này yêu cầu nhập mã duy nhất, giúp tài khoản của bạn ít bị tấn công truy cập trái phép hơn.",
+          "enable": {
+            "trigger": "Bật",
+            "heading": "Bật TOTP",
+            "qrInstructions": "Quét mã QR để thêm TOTP",
+            "secretCodeLabel": "Mã bí mật: ",
+            "pinLabel": "Mã PIN",
+            "pinDescription": "Vui lòng nhập mã 6 chữ số từ ứng dụng xác thực của bạn.",
+            "submitButton": "Xác nhận",
+            "successMessage": "Đã bật xác thực TOTP",
+            "errorMessage": "Lỗi khi xác minh mã"
+          },
+          "disable": {
+            "trigger": "Tắt",
+            "heading": "Bạn có thực sự muốn tắt TOTP không?",
+            "message": "Khi tắt xác thực TOTP, tài khoản của bạn sẽ kém an toàn hơn. Bạn có chắc chắn muốn tiếp tục không?",
+            "successMessage": "Đã tắt xác thực TOTP",
+            "errorMessage": "Lỗi khi tắt"
+          }
+        },
+        "deactivation": {
+          "heading": "Vô hiệu hóa tài khoản",
+          "description": "Sau khi vô hiệu hóa tài khoản, bạn sẽ không thể đăng nhập. Sau 7 ngày, tài khoản sẽ bị xóa hoàn toàn. Trước thời điểm đó, bạn có thể liên hệ bộ phận hỗ trợ để khôi phục quyền truy cập và mở khóa tài khoản.",
+          "confirmModal": {
+            "heading": "Xác nhận vô hiệu hóa",
+            "message": "Bạn có chắc chắn muốn vô hiệu hóa tài khoản không? Chỉ có thể khôi phục quyền truy cập trong vòng 7 ngày."
+          },
+          "deactivateButton": "Vô hiệu hóa"
+        }
       }
     }
   },
