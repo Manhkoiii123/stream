@@ -273,12 +273,29 @@
           "heading": "Đổi ngôn ngữ",
           "description": "Bạn có thể chọn ngôn ngữ cho giao diện trang web",
           "successMessage": "Ngôn ngữ trang web đã được thay đổi thành công",
-          "selectPlaceholder": "Chọn ngôn ngữ"
+          "selectPlaceholder": "Chọn ngôn ngữ",
+          "errorMessage": "Lỗi khi đổi ngôn ngữ"
         },
         "color": {
           "heading": "Đổi màu sắc",
           "description": "Bạn có thể chọn màu sắc cho giao diện trang web"
         }
+      },
+      "notifications": {
+        "header": {
+          "heading": "Thông báo",
+          "description": "Cấu hình cách bạn muốn nhận thông báo từ TeaStream. Bạn sẽ nhận thông báo khi các kênh bạn theo dõi bắt đầu phát trực tiếp, cũng như khi có người đăng ký mới."
+        },
+        "siteNotifications": {
+          "heading": "Thông báo trên trang",
+          "description": "Nếu tắt thông báo trên trang, bạn sẽ không nhận thông báo về người đăng ký mới trên kênh của mình hoặc về các buổi phát trực tiếp mới."
+        },
+        "telegramNotifications": {
+          "heading": "Thông báo Telegram",
+          "description": "Nếu bật thông báo qua Telegram, tài khoản TeaStream của bạn sẽ được liên kết với tài khoản Telegram, và bạn sẽ nhận tin nhắn về đăng ký mới, buổi phát trực tiếp mới, đặt lại mật khẩu và mã xác thực hai yếu tố."
+        },
+        "successMessage": "Cập nhật cài đặt thông báo thành công",
+        "errorMessage": "Lỗi khi cập nhật cài đặt thông báo"
       }
     }
   },

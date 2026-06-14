@@ -604,6 +604,11 @@ export type ChangeInfoInput = {
   username: string;
 };
 
+export type ChangeNotificationSettingInput = {
+  siteNotifications: boolean;
+  telegramNotifications: boolean;
+};
+
 export type ChangePasswordInput = {
   newPassword: string;
   oldPassword: string;
@@ -717,6 +722,13 @@ export type ChangeEmailMutationVariables = Exact<{
 
 export type ChangeEmailMutation = { changeEmail: boolean };
 
+export type ChangeNotificationSettingMutationVariables = Exact<{
+  data: ChangeNotificationSettingInput;
+}>;
+
+
+export type ChangeNotificationSettingMutation = { changeNotificationSettings: { telegramAuthToken: string | null, notificationSettings: { siteNotifications: boolean, telegramNotifications: boolean } } };
+
 export type ChangePasswordMutationVariables = Exact<{
   data: ChangePasswordInput;
 }>;
@@ -809,7 +821,7 @@ export type FindNotificationsByUserQuery = { findNotificationsByUser: Array<{ id
 export type FindProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type FindProfileQuery = { findProfile: { username: string, email: string, displayName: string, avatar: string | null, bio: string | null, isTotpEnabled: boolean, socialLinks: Array<{ title: string, url: string }> } };
+export type FindProfileQuery = { findProfile: { username: string, email: string, displayName: string, avatar: string | null, bio: string | null, isTotpEnabled: boolean, socialLinks: Array<{ title: string, url: string }>, notificationSettings: { siteNotifications: boolean, telegramNotifications: boolean } } };
 
 export type FindSocialLinksQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1093,6 +1105,43 @@ export function useChangeEmailMutation(baseOptions?: ApolloReactHooks.MutationHo
 export type ChangeEmailMutationHookResult = ReturnType<typeof useChangeEmailMutation>;
 export type ChangeEmailMutationResult = Apollo.MutationResult<ChangeEmailMutation>;
 export type ChangeEmailMutationOptions = Apollo.BaseMutationOptions<ChangeEmailMutation, ChangeEmailMutationVariables>;
+export const ChangeNotificationSettingDocument = gql`
+    mutation ChangeNotificationSetting($data: ChangeNotificationSettingInput!) {
+  changeNotificationSettings(data: $data) {
+    notificationSettings {
+      siteNotifications
+      telegramNotifications
+    }
+    telegramAuthToken
+  }
+}
+    `;
+export type ChangeNotificationSettingMutationFn = Apollo.MutationFunction<ChangeNotificationSettingMutation, ChangeNotificationSettingMutationVariables>;
+
+/**
+ * __useChangeNotificationSettingMutation__
+ *
+ * To run a mutation, you first call `useChangeNotificationSettingMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChangeNotificationSettingMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [changeNotificationSettingMutation, { data, loading, error }] = useChangeNotificationSettingMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useChangeNotificationSettingMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<ChangeNotificationSettingMutation, ChangeNotificationSettingMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useMutation<ChangeNotificationSettingMutation, ChangeNotificationSettingMutationVariables>(ChangeNotificationSettingDocument, options);
+      }
+export type ChangeNotificationSettingMutationHookResult = ReturnType<typeof useChangeNotificationSettingMutation>;
+export type ChangeNotificationSettingMutationResult = Apollo.MutationResult<ChangeNotificationSettingMutation>;
+export type ChangeNotificationSettingMutationOptions = Apollo.BaseMutationOptions<ChangeNotificationSettingMutation, ChangeNotificationSettingMutationVariables>;
 export const ChangePasswordDocument = gql`
     mutation ChangePassword($data: ChangePasswordInput!) {
   changePassword(data: $data)
@@ -1584,6 +1633,10 @@ export const FindProfileDocument = gql`
       url
     }
     isTotpEnabled
+    notificationSettings {
+      siteNotifications
+      telegramNotifications
+    }
   }
 }
     `;

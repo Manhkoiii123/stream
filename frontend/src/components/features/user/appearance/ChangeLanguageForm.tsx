@@ -39,9 +39,7 @@ const ChangeLanguageForm = () => {
       try {
         await setLanguage(data.language);
         toast.success(t("successMessage"));
-      } catch {
-        toast.error(t("errorMessage"));
-      }
+      } catch {}
     });
   }
   return (

@@ -17,15 +17,25 @@ export class AccountService {
 	) {}
 
 	public async me(id: string) {
-		const user = await this.prismaService.user.findUnique({
+		await this.prismaService.notificationSettings.upsert({
+			where: { userId: id },
+			update: {},
+			create: {
+				userId: id,
+				siteNotifications: true,
+				telegramNotifications: false
+			}
+		})
+
+		return this.prismaService.user.findUnique({
 			where: {
 				id
 			},
 			include: {
-				socialLinks: true
+				socialLinks: true,
+				notificationSettings: true
 			}
 		})
-		return user
 	}
 
 	public async findAll() {

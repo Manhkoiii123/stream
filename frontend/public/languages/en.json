@@ -274,12 +274,29 @@
           "heading": "Change language",
           "description": "You can choose the language of the site interface",
           "successMessage": "Site language successfully changed",
-          "selectPlaceholder": "Select language"
+          "selectPlaceholder": "Select language",
+          "errorMessage": "Error changing language"
         },
         "color": {
           "heading": "Change color",
           "description": "You can choose a color for the site interface"
         }
+      },
+      "notifications": {
+        "header": {
+          "heading": "Notifications",
+          "description": "Configure how you want to receive notifications from TeaStream. You will receive notifications about the start of broadcasts on channels you are subscribed to, as well as about new subscribers."
+        },
+        "siteNotifications": {
+          "heading": "Site notifications",
+          "description": "If you turn off site notifications, you will not receive notifications about new subscribers to your channel or about new broadcasts."
+        },
+        "telegramNotifications": {
+          "heading": "Telegram notifications",
+          "description": "If you enable Telegram notifications, your TeaStream account will be linked to your Telegram account, and you will receive messages about new subscriptions, new streams, password resets, and two-factor authentication codes."
+        },
+        "successMessage": "Notification settings updated successfully",
+        "errorMessage": "Error updating notification settings"
       }
     }
   },

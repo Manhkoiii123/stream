@@ -10,5 +10,9 @@ query FindProfile {
       url
     }
     isTotpEnabled
+    notificationSettings {
+      siteNotifications
+      telegramNotifications
+    }
   }
 }
