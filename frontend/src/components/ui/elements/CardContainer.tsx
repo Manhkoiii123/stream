@@ -1,12 +1,14 @@
 import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
 import { IconType } from "react-icons";
 interface CardContainerProps {
   heading: string;
-  description: string;
+  description?: string;
   rightContent?: React.ReactNode;
   children?: React.ReactNode;
   Icon?: IconType | LucideIcon;
+  isRightContentFull?: boolean;
 }
 
 const CardContainer = ({
@@ -15,6 +17,7 @@ const CardContainer = ({
   rightContent,
   children,
   Icon,
+  isRightContentFull = false,
 }: CardContainerProps) => {
   return (
     <Card className="p-4">
@@ -27,14 +30,20 @@ const CardContainer = ({
           )}
           <div className="space-y-1">
             <h2 className="font-semibold tracking-wide">{heading}</h2>
-            <p className="max-w-4xl text-sm text-muted-foreground">
-              {description}
-            </p>
+            {description && (
+              <p className="max-w-4xl text-sm text-muted-foreground">
+                {description}
+              </p>
+            )}
           </div>
         </div>
-        {rightContent && <div>{rightContent}</div>}
+        {rightContent && (
+          <div className={cn(isRightContentFull && "w-full pl-4")}>
+            {rightContent}
+          </div>
+        )}
       </div>
-      {children && <div className="mt-4">{children}</div>}
+      {children && <div className="mt-4 ">{children}</div>}
     </Card>
   );
 };

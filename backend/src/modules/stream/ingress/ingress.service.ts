@@ -52,7 +52,7 @@ export class IngressService {
 				streamKey: ingress.streamKey
 			}
 		})
-		return ingress
+		return true
 	}
 	private async resetIngresses(user: User) {
 		const ingresses = await this.livekitService.ingress.listIngress({

@@ -17,6 +17,14 @@ export class AccountService {
 	) {}
 
 	public async me(id: string) {
+		const user = await this.prismaService.user.findUnique({
+			where: { id }
+		})
+
+		if (!user) {
+			return null
+		}
+
 		await this.prismaService.notificationSettings.upsert({
 			where: { userId: id },
 			update: {},
@@ -27,13 +35,24 @@ export class AccountService {
 			}
 		})
 
+		await this.prismaService.stream.upsert({
+			where: { userId: id },
+			update: {},
+			create: {
+				userId: id,
+				title: `${user.username}'s stream`,
+				isLive: false
+			}
+		})
+
 		return this.prismaService.user.findUnique({
 			where: {
 				id
 			},
 			include: {
 				socialLinks: true,
-				notificationSettings: true
+				notificationSettings: true,
+				stream: true
 			}
 		})
 	}
