@@ -377,6 +377,26 @@
         "successMessage": "Đã tạo luồng ingress",
         "errorMessage": "Lỗi khi tạo luồng ingress"
       }
+    },
+    "chat": {
+      "header": {
+        "heading": "Cài đặt chat",
+        "description": "Ở đây bạn có thể quản lý cài đặt chat của mình."
+      },
+      "isChatEnabled": {
+        "heading": "Bật chat",
+        "description": "Nếu bật chat, khán giả sẽ có thể gửi tin nhắn trong chat khi bạn phát trực tiếp."
+      },
+      "isChatFollowersOnly": {
+        "heading": "Chat chỉ dành cho người theo dõi",
+        "description": "Nếu bật cài đặt này, chỉ những người theo dõi bạn mới có thể gửi tin nhắn trong chat."
+      },
+      "isChatPremiumFollowersOnly": {
+        "heading": "Chat chỉ dành cho người theo dõi cao cấp",
+        "description": "Nếu bật cài đặt này, chỉ người theo dõi cao cấp mới có thể gửi tin nhắn trong chat."
+      },
+      "successMessage": "Cập nhật cài đặt chat thành công",
+      "errorMessage": "Lỗi khi cập nhật cài đặt chat"
     }
   },
   "components": {
