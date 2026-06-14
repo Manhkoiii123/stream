@@ -20,10 +20,19 @@ export class TransactionService {
 	public async findMyTransactions(user: User) {
 		const transactions = await this.prismaService.transaction.findMany({
 			where: {
-				userId: user.id
+				user: {
+					sponsorshipSubscriptions: {
+						some: {
+							channelId: user.id
+						}
+					}
+				}
 			},
 			orderBy: {
 				createdAt: 'desc'
+			},
+			include: {
+				user: true
 			}
 		})
 		return transactions

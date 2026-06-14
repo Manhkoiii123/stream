@@ -422,6 +422,56 @@
         "actions": "Hành động",
         "viewChannel": "Xem kênh"
       }
+    },
+    "plans": {
+      "header": {
+        "heading": "Gói cao cấp",
+        "description": "Đây là danh sách các gói cao cấp cho kênh của bạn."
+      },
+      "alert": {
+        "heading": "Yêu cầu xác minh kênh",
+        "description": "Để tạo gói cao cấp, kênh của bạn phải được xác minh. Bạn chỉ cần 10 người theo dõi để nhận dấu tích và mở khóa tính năng này."
+      },
+      "createForm": {
+        "trigger": "Tạo gói",
+        "heading": "Tạo gói",
+        "titleLabel": "Tiêu đề",
+        "titlePlaceholder": "Gói đăng ký kênh Premium",
+        "titleDescription": "Nhập tên gói của bạn. Tên này sẽ được hiển thị cho những người theo dõi của bạn.",
+        "descriptionLabel": "Mô tả",
+        "descriptionPlaceholder": "Mô tả những gì gói của bạn bao gồm",
+        "descriptionDescription": "Mô tả những gì gói của bạn bao gồm. Điều này sẽ giúp những người theo dõi của bạn hiểu được lợi ích của việc đăng ký.",
+        "priceLabel": "Giá (USD)",
+        "priceDescription": "Nhập giá gói bằng đô la Mỹ. Đây là số tiền người dùng sẽ thanh toán khi đăng ký.",
+        "priceEquivalent": "Quy đổi: {amount}",
+        "submitButton": "Tạo",
+        "successMessage": "Đã tạo gói cao cấp",
+        "errorMessage": "Lỗi khi tạo gói"
+      },
+      "columns": {
+        "date": "Ngày tạo",
+        "title": "Tiêu đề",
+        "price": "Giá",
+        "actions": "Hành động",
+        "remove": "Xóa",
+        "successMessage": "Xóa gói thành công",
+        "removeMessage": "Lỗi khi xóa gói"
+      }
+    },
+    "transactions": {
+      "header": {
+        "heading": "Giao dịch",
+        "description": "Đây là danh sách các giao dịch liên quan đến tài trợ kênh của bạn."
+      },
+      "columns": {
+        "date": "Ngày tạo",
+        "status": "Trạng thái",
+        "success": "Thành công",
+        "pending": "Đang chờ",
+        "failed": "Thất bại",
+        "expired": "Hết hạn",
+        "amount": "Số tiền"
+      }
     }
   },
   "components": {

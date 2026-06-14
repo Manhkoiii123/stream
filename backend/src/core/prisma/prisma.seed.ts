@@ -1,8 +1,127 @@
 import { BadRequestException, Logger } from '@nestjs/common'
-import { PrismaClient } from '@prisma/client'
+import {
+	Prisma,
+	PrismaClient,
+	SponsorshipPlan,
+	TransactionStatus
+} from '@prisma/client'
 import { hash } from 'argon2'
 
 const prisma = new PrismaClient()
+
+async function seedSilentbladeDashboard(tx: Prisma.TransactionClient) {
+	const silentblade = await tx.user.findUnique({
+		where: { username: 'silentblade' }
+	})
+
+	if (!silentblade) {
+		Logger.warn('silentblade user not found, skipping dashboard seed')
+		return
+	}
+
+	await tx.user.update({
+		where: { id: silentblade.id },
+		data: {
+			email: 'silentblade@gmail.com',
+			isVerified: true
+		}
+	})
+
+	const otherUsers = await tx.user.findMany({
+		where: { username: { not: 'silentblade' } },
+		take: 8,
+		orderBy: { createdAt: 'asc' }
+	})
+
+	for (const follower of otherUsers.slice(0, 6)) {
+		await tx.follow.upsert({
+			where: {
+				followerId_followingId: {
+					followerId: follower.id,
+					followingId: silentblade.id
+				}
+			},
+			create: {
+				followerId: follower.id,
+				followingId: silentblade.id
+			},
+			update: {}
+		})
+	}
+
+	const plansData = [
+		{
+			title: 'Supporter',
+			description: 'Access to subscriber-only chat and emotes.',
+			price: 4.99,
+			stripeProductId: 'prod_seed_silentblade_supporter',
+			stripePlanId: 'plan_seed_silentblade_supporter'
+		},
+		{
+			title: 'Premium',
+			description: 'Premium badge and priority chat messages.',
+			price: 9.99,
+			stripeProductId: 'prod_seed_silentblade_premium',
+			stripePlanId: 'plan_seed_silentblade_premium'
+		},
+		{
+			title: 'VIP',
+			description: 'All perks plus exclusive behind-the-scenes content.',
+			price: 19.99,
+			stripeProductId: 'prod_seed_silentblade_vip',
+			stripePlanId: 'plan_seed_silentblade_vip'
+		}
+	]
+
+	const plans: SponsorshipPlan[] = []
+	for (const plan of plansData) {
+		const createdPlan = await tx.sponsorshipPlan.create({
+			data: {
+				...plan,
+				channelId: silentblade.id
+			}
+		})
+		plans.push(createdPlan)
+	}
+
+	const transactionStatuses = [
+		TransactionStatus.SUCCESS,
+		TransactionStatus.PENDING,
+		TransactionStatus.FAILED,
+		TransactionStatus.EXPIRED
+	]
+
+	for (let index = 0; index < otherUsers.length; index++) {
+		const sponsor = otherUsers[index]
+		const plan = plans[index % plans.length]
+		const expiresAt = new Date()
+		expiresAt.setDate(expiresAt.getDate() + 30)
+
+		await tx.sponsorshipSubscription.create({
+			data: {
+				userId: sponsor.id,
+				channelId: silentblade.id,
+				planId: plan.id,
+				expiresAt
+			}
+		})
+
+		await tx.transaction.create({
+			data: {
+				amount: plan.price,
+				currency: 'usd',
+				stripeSubscriptionId: `seed_sub_silentblade_${sponsor.username}`,
+				status: transactionStatuses[index % transactionStatuses.length],
+				userId: sponsor.id
+			}
+		})
+	}
+
+	Logger.log(
+		`Seeded silentblade dashboard: 6 followers, ${plans.length} plans, ${otherUsers.length} sponsors & transactions`
+	)
+}
+
 async function main() {
 	try {
 		Logger.log('Seeding database...')
@@ -268,7 +387,10 @@ async function main() {
 				if (!userExists) {
 					const createdUser = await tx.user.create({
 						data: {
-							email: `${username}@gmail.com`,
+							email:
+								username === 'silentblade'
+									? 'silentblade@gmail.com'
+									: `${username}@gmail.com`,
 							password: await hash('123456789'),
 							username,
 							displayName: username,
@@ -276,6 +398,7 @@ async function main() {
 								Math.floor(Math.random() * avatarUrls.length)
 							],
 							isEmailVerified: true,
+							isVerified: username === 'silentblade',
 							isDeactivated: false,
 							socialLinks: {
 								createMany: {
@@ -326,6 +449,8 @@ async function main() {
 					)
 				}
 			}
+
+			await seedSilentbladeDashboard(tx)
 		})
 	} catch (error) {
 		Logger.error('Error seeding database', error)
@@ -334,4 +459,4 @@ async function main() {
 		await prisma.$disconnect()
 	}
 }
-main()
+void main()
