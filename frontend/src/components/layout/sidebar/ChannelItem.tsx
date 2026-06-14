@@ -33,7 +33,10 @@ export function ChannelItem({ channel }: ChannelItemProps) {
     </Hints>
   ) : (
     <Button
-      className={cn("h-11  mt-2 w-full justify-start", isActive && "bg-accent")}
+      className={cn(
+        "mt-2 h-11 w-full justify-start rounded-lg",
+        isActive && "bg-accent font-medium text-accent-foreground",
+      )}
       variant={"ghost"}
       asChild
     >

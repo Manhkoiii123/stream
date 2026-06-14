@@ -258,6 +258,27 @@
           },
           "deactivateButton": "Vô hiệu hóa"
         }
+      },
+      "appearance": {
+        "header": {
+          "heading": "Giao diện",
+          "description": "Tùy chỉnh giao diện trang web theo sở thích của bạn. Chọn chủ đề và ngôn ngữ giúp trải nghiệm của bạn thoải mái hơn."
+        },
+        "theme": {
+          "heading": "Đổi chủ đề",
+          "description": "Bạn có thể chọn chủ đề sáng hoặc tối cho giao diện trang web",
+          "successMessage": "Chủ đề trang web đã được thay đổi thành công"
+        },
+        "language": {
+          "heading": "Đổi ngôn ngữ",
+          "description": "Bạn có thể chọn ngôn ngữ cho giao diện trang web",
+          "successMessage": "Ngôn ngữ trang web đã được thay đổi thành công",
+          "selectPlaceholder": "Chọn ngôn ngữ"
+        },
+        "color": {
+          "heading": "Đổi màu sắc",
+          "description": "Bạn có thể chọn màu sắc cho giao diện trang web"
+        }
       }
     }
   },

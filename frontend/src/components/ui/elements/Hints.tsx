@@ -18,7 +18,7 @@ const Hints = ({ label, align, asChild, side, children }: HintProps) => {
       <Tooltip delayDuration={0}>
         <TooltipTrigger asChild={asChild}>{children}</TooltipTrigger>
         <TooltipContent
-          className="dark:bg-white bg-[#1f2128] text-white dark:text-[#1f2128]"
+          className="border border-border bg-popover text-popover-foreground"
           side={side}
           align={align}
         >

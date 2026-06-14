@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "@/styles/themes.css";
 import ApolloClientProvider from "@/providers/ApolloClientProvider";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
 import { ToastProvider } from "@/components/ui/toast";
+import ColorSwitcher from "@/components/ui/elements/ColorSwitcher";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +32,7 @@ export default async function RootLayout({
             <ThemeProvider attribute={"class"} defaultTheme="dark">
               <ToastProvider>{children}</ToastProvider>
               <Toaster />
+              <ColorSwitcher />
             </ThemeProvider>
           </NextIntlClientProvider>
         </ApolloClientProvider>

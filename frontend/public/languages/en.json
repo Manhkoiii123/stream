@@ -259,6 +259,27 @@
           },
           "deactivateButton": "Deactivate"
         }
+      },
+      "appearance": {
+        "header": {
+          "heading": "Appearance",
+          "description": "Customize the appearance of the site interface to your liking. Choose a theme and language that will make your interaction more comfortable."
+        },
+        "theme": {
+          "heading": "Change theme",
+          "description": "You can choose a dark or light theme for the site interface",
+          "successMessage": "Site theme successfully changed"
+        },
+        "language": {
+          "heading": "Change language",
+          "description": "You can choose the language of the site interface",
+          "successMessage": "Site language successfully changed",
+          "selectPlaceholder": "Select language"
+        },
+        "color": {
+          "heading": "Change color",
+          "description": "You can choose a color for the site interface"
+        }
       }
     }
   },

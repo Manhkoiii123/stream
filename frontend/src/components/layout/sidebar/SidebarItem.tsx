@@ -10,6 +10,8 @@ import { usePathname } from "next/navigation";
 interface SidebarItemProps {
   route: Route;
 }
+const activeNavClass = "bg-accent text-accent-foreground font-medium";
+
 const SidebarItem = ({ route }: SidebarItemProps) => {
   const pathName = usePathname();
   const { isCollapsed } = useSidebar();
@@ -17,7 +19,10 @@ const SidebarItem = ({ route }: SidebarItemProps) => {
   return isCollapsed ? (
     <Hints label={route.label} side="right" asChild>
       <Button
-        className={cn("h-11 w-full justify-center", isActive && "bg-accent")}
+        className={cn(
+          "h-11 w-full justify-center rounded-lg",
+          isActive && activeNavClass,
+        )}
         variant={"ghost"}
         asChild
       >
@@ -28,7 +33,7 @@ const SidebarItem = ({ route }: SidebarItemProps) => {
     </Hints>
   ) : (
     <Button
-      className={cn("h-11 w-full justify-start", isActive && "bg-accent")}
+      className={cn("h-11 w-full justify-start rounded-lg", isActive && activeNavClass)}
       variant={"ghost"}
       asChild
     >
