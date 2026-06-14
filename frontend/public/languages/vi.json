@@ -296,6 +296,34 @@
         },
         "successMessage": "Cập nhật cài đặt thông báo thành công",
         "errorMessage": "Lỗi khi cập nhật cài đặt thông báo"
+      },
+      "sessions": {
+        "header": {
+          "heading": "Phiên đăng nhập",
+          "description": "Phiên đăng nhập là các thiết bị bạn đang dùng hoặc đã dùng để đăng nhập vào tài khoản TeaStream. Tại đây hiển thị các phiên đang hoạt động."
+        },
+        "info": {
+          "current": "Phiên hiện tại",
+          "active": "Phiên đang hoạt động",
+          "notFound": "Không tìm thấy phiên đang hoạt động"
+        },
+        "sessionItem": {
+          "deleteButton": "Xóa",
+          "detailsButton": "Chi tiết",
+          "confirmModal": {
+            "heading": "Xóa phiên đăng nhập",
+            "message": "Bạn có chắc chắn muốn xóa phiên đăng nhập này không? Hành động này sẽ xóa vĩnh viễn phiên trên thiết bị này và kết thúc mọi hoạt động liên quan."
+          },
+          "successMessage": "Đã xóa phiên đăng nhập",
+          "errorMessage": "Lỗi khi xóa phiên đăng nhập"
+        },
+        "sessionModal": {
+          "heading": "Thông tin phiên đăng nhập",
+          "device": "Thiết bị:",
+          "location": "Vị trí:",
+          "ipAddress": "Địa chỉ IP:",
+          "createdAt": "Ngày tạo:"
+        }
       }
     }
   },
@@ -306,6 +334,24 @@
     "confirmModal": {
       "cancel": "Hủy",
       "continue": "Tiếp tục"
+    }
+  },
+  "utils": {
+    "formatDate": {
+      "months": {
+        "january": "Tháng 1",
+        "february": "Tháng 2",
+        "march": "Tháng 3",
+        "april": "Tháng 4",
+        "may": "Tháng 5",
+        "june": "Tháng 6",
+        "july": "Tháng 7",
+        "august": "Tháng 8",
+        "september": "Tháng 9",
+        "october": "Tháng 10",
+        "november": "Tháng 11",
+        "december": "Tháng 12"
+      }
     }
   }
 }

@@ -13,6 +13,7 @@ import ChangeThemeForm from "@/components/features/user/appearance/ChangeThemeFo
 import ChangeLanguageForm from "@/components/features/user/appearance/ChangeLanguageForm";
 import ChangeColorForm from "@/components/features/user/appearance/ChangeColorForm";
 import ChangeNotificationSettingsForm from "@/components/features/user/notifications/ChangeNotificationSettingsForm";
+import SessionsList from "@/components/features/user/sessions/SessionsList";
 const UserSettings = () => {
   const t = useTranslations("dashboard.settings");
   return (
@@ -84,7 +85,15 @@ const UserSettings = () => {
             <ChangeNotificationSettingsForm />
           </div>
         </TabsContent>
-        <TabsContent value="sessions">sessions</TabsContent>
+        <TabsContent value="sessions">
+          <div className="mt-5 space-y-6">
+            <Heading
+              title={t("sessions.header.heading")}
+              description={t("sessions.header.description")}
+            />
+            <SessionsList />
+          </div>
+        </TabsContent>
       </Tabs>
     </div>
   );
