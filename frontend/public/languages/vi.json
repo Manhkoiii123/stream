@@ -397,6 +397,18 @@
       },
       "successMessage": "Cập nhật cài đặt chat thành công",
       "errorMessage": "Lỗi khi cập nhật cài đặt chat"
+    },
+    "followers": {
+      "header": {
+        "heading": "Người theo dõi",
+        "description": "Đây là danh sách tất cả những người theo dõi bạn."
+      },
+      "columns": {
+        "date": "Ngày",
+        "user": "Người dùng",
+        "actions": "Hành động",
+        "viewChannel": "Xem kênh"
+      }
     }
   },
   "components": {
@@ -409,6 +421,9 @@
     },
     "copyButton": {
       "successMessage": "Đã sao chép"
+    },
+    "dataTable": {
+      "noResults": "Không có kết quả"
     }
   },
   "utils": {
