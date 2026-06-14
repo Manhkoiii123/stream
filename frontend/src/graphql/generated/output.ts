@@ -833,6 +833,11 @@ export type FindMyFollowersQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type FindMyFollowersQuery = { findMyFollowers: Array<{ createdAt: unknown, follower: { username: string, avatar: string | null, isVerified: boolean } }> };
 
+export type FindMySponsorsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type FindMySponsorsQuery = { findMySponsors: Array<{ expiresAt: unknown, user: { username: string, avatar: string | null, isVerified: boolean }, plan: { title: string } }> };
+
 export type ClearSessionsMutationVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1690,6 +1695,56 @@ export type FindMyFollowersQueryHookResult = ReturnType<typeof useFindMyFollower
 export type FindMyFollowersLazyQueryHookResult = ReturnType<typeof useFindMyFollowersLazyQuery>;
 export type FindMyFollowersSuspenseQueryHookResult = ReturnType<typeof useFindMyFollowersSuspenseQuery>;
 export type FindMyFollowersQueryResult = Apollo.QueryResult<FindMyFollowersQuery, FindMyFollowersQueryVariables>;
+export const FindMySponsorsDocument = gql`
+    query FindMySponsors {
+  findMySponsors {
+    expiresAt
+    user {
+      username
+      avatar
+      isVerified
+    }
+    plan {
+      title
+    }
+  }
+}
+    `;
+
+/**
+ * __useFindMySponsorsQuery__
+ *
+ * To run a query within a React component, call `useFindMySponsorsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFindMySponsorsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFindMySponsorsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useFindMySponsorsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindMySponsorsQuery, FindMySponsorsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<FindMySponsorsQuery, FindMySponsorsQueryVariables>(FindMySponsorsDocument, options);
+      }
+export function useFindMySponsorsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindMySponsorsQuery, FindMySponsorsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<FindMySponsorsQuery, FindMySponsorsQueryVariables>(FindMySponsorsDocument, options);
+        }
+// @ts-ignore
+export function useFindMySponsorsSuspenseQuery(baseOptions?: ApolloReactHooks.SuspenseQueryHookOptions<FindMySponsorsQuery, FindMySponsorsQueryVariables>): ApolloReactHooks.UseSuspenseQueryResult<FindMySponsorsQuery, FindMySponsorsQueryVariables>;
+export function useFindMySponsorsSuspenseQuery(baseOptions?: ApolloReactHooks.SkipToken | ApolloReactHooks.SuspenseQueryHookOptions<FindMySponsorsQuery, FindMySponsorsQueryVariables>): ApolloReactHooks.UseSuspenseQueryResult<FindMySponsorsQuery | undefined, FindMySponsorsQueryVariables>;
+export function useFindMySponsorsSuspenseQuery(baseOptions?: ApolloReactHooks.SkipToken | ApolloReactHooks.SuspenseQueryHookOptions<FindMySponsorsQuery, FindMySponsorsQueryVariables>) {
+          const options = baseOptions === ApolloReactHooks.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useSuspenseQuery<FindMySponsorsQuery, FindMySponsorsQueryVariables>(FindMySponsorsDocument, options);
+        }
+export type FindMySponsorsQueryHookResult = ReturnType<typeof useFindMySponsorsQuery>;
+export type FindMySponsorsLazyQueryHookResult = ReturnType<typeof useFindMySponsorsLazyQuery>;
+export type FindMySponsorsSuspenseQueryHookResult = ReturnType<typeof useFindMySponsorsSuspenseQuery>;
+export type FindMySponsorsQueryResult = Apollo.QueryResult<FindMySponsorsQuery, FindMySponsorsQueryVariables>;
 export const ClearSessionsDocument = gql`
     mutation ClearSessions {
   clearSessions
